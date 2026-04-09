@@ -1,4 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Register Service Worker
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('./sw.js')
+                .then(reg => console.log('Service Worker: Registered'))
+                .catch(err => console.log(`Service Worker: Error: ${err}`));
+        });
+    }
+
     // State
     let activities = JSON.parse(localStorage.getItem('activities')) || [
         "Faire un jeu de société 🎲",
