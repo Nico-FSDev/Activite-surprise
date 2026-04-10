@@ -5,66 +5,283 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Activité Surprise</title>
     <meta name="description" content="Tire au sort une activité en famille">
+    <link rel="icon" type="image/png" href="images/Icon_Activite-Surprise_192x192.png">
     <link rel="manifest" href="manifest.json">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <!-- External Libraries (Professional Modules) -->
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
     <link rel="stylesheet" href="style.css">
     <meta name="theme-color" content="#56ab2f">
     <link rel="apple-touch-icon" href="images/Icon_Activite-Surprise_192x192.png">
 </head>
 <body>
-    <div id="app">
-        <!-- Header -->
-        <header>
-            <h1>🍃 Surprise</h1>
-            <button id="nav-management-btn" aria-label="Gérer les activités">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
-            </button>
-        </header>
-
-        <!-- Main Picker View -->
-        <main id="view-picker" class="view active">
-            <div class="result-container">
-                <p id="result-text">Prêt pour l'aventure ?</p>
+    <div id="auth-container" class="auth-view active">
+        <div class="auth-card glass">
+            <div class="auth-header">
+                <img src="images/Icon_Activite-Surprise_192x192.png" alt="Logo" class="auth-logo">
+                <h1>Activité Surprise</h1>
+                <p>Bienvenue dans votre espace famille</p>
             </div>
             
-            <button id="btn-draw" class="primary-btn pulse">
-                <span class="btn-text">Activité Surprise</span>
-            </button>
-        </main>
-
-        <!-- Management View -->
-        <main id="view-management" class="view">
-            <div class="header-back">
-                <button id="nav-home-btn" class="icon-btn">
-                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"></path></svg>
-                </button>
-                <h2>Gestion des Activités</h2>
-            </div>
-
-            <div class="card glass">
-                <h3>Ajouter (une par ligne)</h3>
-                <textarea id="input-activities" placeholder="Aller au parc&#10;Faire un gâteau&#10;Jeu de société" rows="4"></textarea>
-                <button id="btn-add" class="secondary-btn">Ajouter au tirage</button>
-            </div>
-
-            <div class="card glass tabs">
-                <div class="tab-headers">
-                    <button class="tab-btn active" data-target="list-available">Disponibles (<span id="count-available">0</span>)</button>
-                    <button class="tab-btn" data-target="list-blacklisted">Déjà faites (<span id="count-blacklisted">0</span>)</button>
+            <div id="auth-error-msg" class="error-text"></div>
+            <form id="login-form">
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required placeholder="nom@exemple.com">
                 </div>
-                
-                <div id="list-available" class="tab-content active list-container">
-                    <!-- Available items go here -->
+                <div class="input-group">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" id="password" required placeholder="••••••••">
                 </div>
-
-                <div id="list-blacklisted" class="tab-content list-container">
-                    <!-- Blacklisted items go here with un-blacklist button -->
-                </div>
-            </div>
-            <button id="btn-reset" class="danger-btn">Remettre à zéro (Tout disponible)</button>
-        </main>
+                <button type="submit" class="primary-btn glow">Se connecter</button>
+            </form>
+            
+            <p class="auth-switch">Pas de compte ? <a href="#" id="show-signup">S'inscrire</a></p>
+        </div>
     </div>
 
-    <script src="app.js"></script>
+    <div id="app-shell" class="hidden">
+        <!-- Desktop Sidebar -->
+        <aside class="sidebar glass">
+            <div class="sidebar-header">
+                <div class="logo-box">✨</div>
+                <h2>Activité Surprise</h2>
+            </div>
+
+            <nav class="nav-list">
+                <div class="nav-item active" data-view="home">
+                    <i class='bx bx-home-alt'></i>
+                    <span>Tableau de bord</span>
+                </div>
+                <div class="nav-item" data-view="management">
+                    <i class='bx bx-cog'></i>
+                    <span>Gestion des Activités</span>
+                </div>
+                <div class="nav-item" data-view="calendar">
+                    <i class='bx bx-calendar'></i>
+                    <span>Calendrier</span>
+                </div>
+                <div class="nav-item" data-view="participants">
+                    <i class='bx bx-group'></i>
+                    <span>Participants</span>
+                </div>
+                <div class="nav-item" data-view="stats">
+                    <i class='bx bx-bar-chart-alt-2'></i>
+                    <span>Statistiques</span>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="nav-item">
+                    <i class='bx bx-slider-alt'></i>
+                    <span>Paramètres</span>
+                </div>
+                <div class="user-profile">
+                    <div class="user-avatar-mini">M</div>
+                    <div class="user-info">
+                        <h4 id="display-name">Utilisateur</h4>
+                        <p>Famille Heureuse</p>
+                    </div>
+                </div>
+                <button id="logout-btn" class="nav-item logout-link" style="border:none; width:100%; text-align:left; background:none;">
+                    <i class='bx bx-log-out'></i>
+                    <span>Déconnexion</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-layout">
+            <!-- Mobile Header -->
+            <header class="mobile-header">
+                <div class="user-greeting">
+                    <img src="images/user_profile_marie.png" alt="Profile" class="avatar-small">
+                    <div class="greeting-text">
+                        <span class="greeting">Bonjour, <span id="display-name-mobile">Marie</span></span>
+                        <span class="sub-greeting" id="current-date">Aujourd'hui</span>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="icon-btn search">🔍</button>
+                    <button class="icon-btn menu">☰</button>
+                </div>
+            </header>
+
+            <main id="content-area">
+                <!-- Home View (Vibrant Mobile Lifestyle) -->
+                <section id="view-home" class="app-view active">
+                    <!-- Mobile View -->
+                    <div class="hero-card-mobile h-desktop-hide">
+                        <div class="hero-img-box">
+                            <img src="images/baking_activity_illustration.png" alt="Activity">
+                        </div>
+                        <div class="hero-body">
+                            <span class="hero-badge">L'activité du moment :</span>
+                            <h2 class="hero-title">Faire de la pâtisserie 🧁</h2>
+                            <div class="hero-subtitle">
+                                <i class='bx bx-time-five'></i>
+                                <span>2h • Ingrédients & Rires</span>
+                            </div>
+                            <p class="hero-desc">Rassemblez la famille pour préparer de délicieux cupcakes décorés !</p>
+                        </div>
+                    </div>
+
+                    <div class="cta-container h-desktop-hide">
+                        <button id="btn-surprise-mobile" class="cta-surprise-btn">
+                            <div class="cta-dice-icon">🎲</div>
+                            <div class="cta-main-row">
+                                <span>Trouver une activité surprise !</span>
+                            </div>
+                            <span class="cta-sub-text">Lancez le dé pour l'aventure</span>
+                        </button>
+                    </div>
+
+                    <div class="history-section h-desktop-hide">
+                        <h3 class="section-title">Dernières Activités</h3>
+                        <div id="chips-container" class="chips-container">
+                            <div class="activity-chip">🚲 Vélo</div>
+                            <div class="activity-chip">🧺 Pique-nique</div>
+                            <div class="activity-chip">🧩 Jeux</div>
+                        </div>
+                    </div>
+
+                    <!-- Desktop View Only -->
+                    <div class="hero-carousel glass h-mobile-hide">
+                        <img src="images/baking_activity_illustration.png" alt="Hero" class="hero-image">
+                        <div class="hero-content">
+                            <span class="badge">L'activité du moment :</span>
+                            <h2>Faire de la pâtisserie 🧁👨‍🍳</h2>
+                            <h3>Ingrédients & Éclat de Rire !</h3>
+                            <p>Rassemblez la famille pour préparer de délicieux cupcakes décorés ! Farine, œufs et bonne humeur au programme.</p>
+                        </div>
+                    </div>
+
+                    <div class="discovery-section h-mobile-hide">
+                        <div class="roulette-wrapper">
+                            <div class="roulette-pointer">▼</div>
+                            <div id="roulette-container">
+                                <!-- SVG Wheel injected here -->
+                                <div class="roulette-placeholder">Initialisation...</div>
+                            </div>
+                            <button id="btn-spin" class="spin-center-btn">SPIN</button>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Management View (Inspiration Screen 1) -->
+                <section id="view-management" class="app-view">
+                    <div class="view-header">
+                        <h2>Gestion des Activités</h2>
+                        <p>Gérez et organisez vos activités surprises.</p>
+                    </div>
+
+                    <div class="management-grid">
+                        <div class="add-activity-card glass">
+                            <div class="pro-add-box">
+                                <h3>Ajouter une nouvelle activité</h3>
+                                <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">Planifiez vos prochains moments de bonheur.</p>
+                                
+                                <textarea id="pro-activity-input" class="modern-input" placeholder="Ajouter une activité (idées, descriptions, détails...)" rows="5"></textarea>
+                                
+                                <button id="btn-add-pro" class="primary-btn">
+                                    <i class='bx bx-plus'></i>
+                                    <span>Ajouter l'activité</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="activities-list-container">
+                            <div class="tab-scrolled">
+                                <button class="tab-link active" data-tab="available">Disponibles</button>
+                                <button class="tab-link" data-tab="done">Déjà faites</button>
+                            </div>
+
+                            <div id="pro-list-available" class="activity-cards-list active">
+                                <!-- Cards injected here -->
+                            </div>
+                            <div id="pro-list-done" class="activity-cards-list">
+                                <!-- Cards injected here -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="view-calendar" class="app-view">
+                    <div class="view-header">
+                        <h2>Calendrier des Activités</h2>
+                        <p>Planifiez et visualisez vos moments en famille.</p>
+                    </div>
+                    <div id="calendar-container" class="glass"></div>
+                </section>
+
+                <section id="view-participants" class="app-view">
+                    <div class="view-header">
+                        <h2>Membres de la Famille</h2>
+                        <p>Gérez les participants pour vos activités.</p>
+                    </div>
+                    <div class="participants-grid">
+                        <div class="add-participant-card glass">
+                            <h3>Ajouter un membre</h3>
+                            <div class="input-box">
+                                <input type="text" id="participant-name" placeholder="Nom du membre">
+                                <button id="btn-add-participant" class="primary-btn wide">Ajouter</button>
+                            </div>
+                        </div>
+                        <div id="participants-list" class="participant-list-grid">
+                            <!-- Participant cards injected here -->
+                        </div>
+                    </div>
+                </section>
+
+                <section id="view-stats" class="app-view">
+                    <div class="view-header">
+                        <h2>Analyses & Statistiques</h2>
+                        <p>Découvrez votre historique d'activités.</p>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-card glass">
+                            <h3>Répartition des Activités</h3>
+                            <canvas id="chart-doughnut"></canvas>
+                        </div>
+                        <div class="stat-card glass">
+                            <h3>Activité Hebdomadaire</h3>
+                            <canvas id="chart-bar"></canvas>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <!-- Mobile Bottom Nav (Vibrant Lifestyle Bar) -->
+            <nav class="mobile-nav">
+                <button class="mobile-nav-item active" data-view="home">
+                    <i class='bx bx-home-alt'></i>
+                    <span>Accueil</span>
+                </button>
+                <button class="mobile-nav-item" data-view="management">
+                    <i class='bx bx-heart'></i>
+                    <span>Favoris</span>
+                </button>
+                <button class="mobile-nav-item" data-view="calendar">
+                    <i class='bx bx-map-alt'></i>
+                    <span>Découvrir</span>
+                </button>
+                <button class="mobile-nav-item" data-view="stats">
+                    <i class='bx bx-trophy'></i>
+                    <span>Défis</span>
+                </button>
+                <button class="mobile-nav-item" data-view="participants">
+                    <i class='bx bx-user'></i>
+                    <span>Profil</span>
+                </button>
+            </nav>
+        </div>
+    </div>
+
+
+    <!-- Firebase SDKs are now imported in app.js via type="module" -->
+    <script type="module" src="app.js"></script>
 </body>
 </html>
