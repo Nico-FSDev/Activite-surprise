@@ -1,8 +1,8 @@
 {
-  "id": "/Activite-surprise/",
+  "id": "/",
   "name": "Activité Surprise",
   "short_name": "Surprise!",
-  "start_url": "./index.html",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#a8e063",
   "theme_color": "#56ab2f",

@@ -18,6 +18,15 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 document.addEventListener('DOMContentLoaded', () => {
+    // --- PWA Service Worker Registration ---
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('./service-worker.js')
+                .then(reg => console.log('SW: Registered', reg))
+                .catch(err => console.log('SW: Failed', err));
+        });
+    }
+
     // --- State & Elements ---
     let currentUser = null;
     let activities = [];
