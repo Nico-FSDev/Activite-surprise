@@ -22,16 +22,16 @@
   ],
   "screenshots": [
     {
-      "src": "images/screenshot-mobile.png",
+      "src": "images/screenshot-mobile.jpg",
       "sizes": "1024x1024",
-      "type": "image/png",
+      "type": "image/jpeg",
       "form_factor": "narrow",
       "label": "Tirage au sort d'activité"
     },
     {
-      "src": "images/screenshot-desktop.png",
+      "src": "images/screenshot-desktop.jpg",
       "sizes": "1024x1024",
-      "type": "image/png",
+      "type": "image/jpeg",
       "form_factor": "wide",
       "label": "Gestion des activités"
     }

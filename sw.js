@@ -7,8 +7,8 @@ const ASSETS = [
     './manifest.json',
     './images/Icon_Activite-Surprise_192x192.png',
     './images/Icon_Activite-Surprise_512x512.png',
-    './images/screenshot-mobile.png',
-    './images/screenshot-desktop.png'
+    './images/screenshot-mobile.jpg',
+    './images/screenshot-desktop.jpg'
 ];
 
 // Install Event
