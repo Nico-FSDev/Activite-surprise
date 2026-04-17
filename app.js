@@ -1148,6 +1148,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         type: 'link_request',
                         fromUid: currentUser.uid,
                         fromName: currentUser.displayName || currentUser.email,
+                        fromEmail: currentUser.email, // Ajout crucial ici
                         toEmail: email,
                         relation: relation || "Membre",
                         participantId: pRef.id,
@@ -1576,13 +1577,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
                 
                 // 3. RECIPROCAL NOTIFICATION: Notify the sender of success
-                // We need the sender's email. It's not in the 'notif' object usually if fromUid is used.
-                // Wait, in my addDoc logic, I didn't store sender email. I'll need to check the sender's doc.
-                // For simplicity, let's assume we can find the sender email or just use toEmail if it was stored.
-                // Actually, I'll update the send logic to include fromEmail.
-                
-                const senderDoc = await getDoc(doc(db, "users", notif.fromUid));
-                const senderEmail = senderDoc.exists() ? senderDoc.data().email : null;
+                // We use the fromEmail directly from the notification to avoid permission issues
+                const senderEmail = notif.fromEmail;
 
                 if (senderEmail) {
                     await addDoc(collection(db, "notifications"), {
