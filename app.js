@@ -69,9 +69,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function initMusic() {
         if (!bgMusic) {
-            bgMusic = new Audio('https://cdn.pixabay.com/audio/2022/03/10/audio_51574d754b.mp3');
+            // Utilisation d'un flux test ultra-stable pour vérifier la connexion
+            bgMusic = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3');
             bgMusic.loop = true;
-            bgMusic.volume = 0.25; // Volume relax
+            bgMusic.volume = 0.5; // Augmentation du volume pour être sûr de l'entendre
+            
+            bgMusic.onerror = () => {
+                console.error("Erreur de chargement audio");
+                if (typeof showToast === 'function') showToast("Erreur de chargement de la musique", "error");
+            };
+            
+            bgMusic.oncanplaythrough = () => console.log("Musique prête à être jouée");
         }
     }
 
