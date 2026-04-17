@@ -1921,11 +1921,17 @@ document.addEventListener('DOMContentLoaded', () => {
         if(!container || window.getComputedStyle(container).display === 'none') return;
         
         const basePool = activities.filter(a => a.status === 'available');
-        const pool = getFilteredActivities(basePool, homeFilters);
+        let fullPool = getFilteredActivities(basePool, homeFilters);
         
-        if (pool.length < 2) {
+        if (fullPool.length < 2) {
             container.innerHTML = '<div class="roulette-placeholder">Ajoutez des activités !</div>';
             return;
+        }
+
+        // Limit to 8 activities for better design (pick random 8 from pool)
+        let pool = [...fullPool];
+        if (pool.length > 8) {
+            pool = pool.sort(() => 0.5 - Math.random()).slice(0, 8);
         }
 
         const size = 320;
@@ -1933,34 +1939,66 @@ document.addEventListener('DOMContentLoaded', () => {
         const radius = center - 10;
         const segmentAngle = 360 / pool.length;
         
-        let svgHtml = `<svg viewBox="0 0 ${size} ${size}" class="roulette-wheel-svg">`;
+        let svgHtml = `<svg viewBox="0 0 ${size} ${size}" class="roulette-wheel-svg">
+            <defs>
+                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#a8e063;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#56ab2f;stop-opacity:1" />
+                </linearGradient>
+                <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#56ab2f;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#4ab32d;stop-opacity:1" />
+                </linearGradient>
+                <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+                    <feOffset dx="0" dy="2" result="offsetblur" />
+                    <feComponentTransfer><feFuncA type="linear" slope="0.5"/></feComponentTransfer>
+                    <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+                </filter>
+            </defs>`;
         
         pool.forEach((activity, i) => {
             const startAngle = i * segmentAngle;
             const endAngle = (i + 1) * segmentAngle;
-            const x1 = center + radius * Math.cos(Math.PI * startAngle / 180);
-            const y1 = center + radius * Math.sin(Math.PI * startAngle / 180);
-            const x2 = center + radius * Math.cos(Math.PI * endAngle / 180);
-            const y2 = center + radius * Math.sin(Math.PI * endAngle / 180);
+            const x1 = center + radius * Math.cos(Math.PI * (startAngle - 90) / 180);
+            const y1 = center + radius * Math.sin(Math.PI * (startAngle - 90) / 180);
+            const x2 = center + radius * Math.cos(Math.PI * (endAngle - 90) / 180);
+            const y2 = center + radius * Math.sin(Math.PI * (endAngle - 90) / 180);
             const largeArc = segmentAngle > 180 ? 1 : 0;
-            const color = i % 2 === 0 ? '#56ab2f' : '#a8e063';
-            svgHtml += `<path d="M ${center} ${center} L ${x1} ${y1} A ${radius} ${radius} 0 ${largeArc} 1 ${x2} ${y2} Z" fill="${color}" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>`;
-            const textAngle = startAngle + segmentAngle / 2;
-            const textX = center + (radius * 0.7) * Math.cos(Math.PI * textAngle / 180);
-            const textY = center + (radius * 0.7) * Math.sin(Math.PI * textAngle / 180);
+            const fill = i % 2 === 0 ? 'url(#grad1)' : 'url(#grad2)';
             
-            // Truncate long titles to avoid overflow
+            svgHtml += `<path d="M ${center} ${center} L ${x1} ${y1} A ${radius} ${radius} 0 ${largeArc} 1 ${x2} ${y2} Z" fill="${fill}" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>`;
+            
+            const textAngle = startAngle + segmentAngle / 2;
+            const textRadius = radius * 0.65;
+            const textX = center + textRadius * Math.cos(Math.PI * (textAngle - 90) / 180);
+            const textY = center + textRadius * Math.sin(Math.PI * (textAngle - 90) / 180);
+            
             let label = activity.title;
             const emoji = activity.title.match(/[\p{Emoji_Presentation}\p{Emoji}\p{Emoji_Component}]/gu)?.[0] || '';
             const titleWithoutEmoji = label.replace(emoji, '').trim();
+            let displayLabel = titleWithoutEmoji.length > 12 ? titleWithoutEmoji.substring(0, 10) + '..' : titleWithoutEmoji;
             
-            // Limit to ~10 chars + ... if needed
-            let displayLabel = titleWithoutEmoji.length > 10 ? titleWithoutEmoji.substring(0, 8) + '..' : titleWithoutEmoji;
-            if (emoji) displayLabel = emoji + ' ' + displayLabel;
-
-            svgHtml += `<text x="${textX}" y="${textY}" class="segment-text" text-anchor="middle" dominant-baseline="middle" font-size="14" font-weight="600" fill="white" transform="rotate(${textAngle + 90}, ${textX}, ${textY})">${displayLabel}</text>`;
+            svgHtml += `
+                <text x="${textX}" y="${textY}" 
+                      fill="white" 
+                      font-size="13" 
+                      font-weight="800" 
+                      text-anchor="middle" 
+                      dominant-baseline="middle" 
+                      style="text-shadow: 0 1px 3px rgba(0,0,0,0.3); font-family: 'Outfit', sans-serif;"
+                      transform="rotate(${textAngle}, ${textX}, ${textY})">
+                    ${emoji ? emoji + ' ' : ''}${displayLabel}
+                </text>`;
         });
         
+        // Central Logo-style hub
+        svgHtml += `
+            <circle cx="${center}" cy="${center}" r="35" fill="white" filter="url(#shadow)"/>
+            <circle cx="${center}" cy="${center}" r="28" fill="url(#grad1)"/>
+            <text x="${center}" y="${center}" dy="8" font-size="28" text-anchor="middle" dominant-baseline="middle">✨</text>
+        `;
+
         svgHtml += '</svg>';
         container.innerHTML = svgHtml;
     }
