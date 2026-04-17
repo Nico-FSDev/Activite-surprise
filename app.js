@@ -627,36 +627,44 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function approveUserManually(requestId, userUid, email) {
+        console.log("Tentative de validation pour:", email, "UID:", userUid);
+        let targetUid = userUid;
+        
         try {
             showToast("Validation en cours...", 'info');
             
-            let targetUid = userUid;
-            
-            // If UID is unknown or string "undefined", we need to find the user by email
+            // Si l'UID est inconnu, on tente de le trouver par l'email
             if (!targetUid || targetUid === 'unknown' || targetUid === 'undefined') {
-                try {
-                    const q = query(collection(db, "users"), where("email", "==", email));
-                    const userSnap = await getDocs(q);
-                    if (!userSnap.empty) {
-                        targetUid = userSnap.docs[0].id;
-                    } else {
-                        return showToast("Utilisateur introuvable. Demandez-lui de s'inscrire d'abord.", 'error');
-                    }
-                } catch(err) {
-                    console.error("Query users failed", err);
-                    return showToast("Erreur de lecture: Les règles Firestore n'ont pas été publiées !", 'error', 6000);
+                const q = query(collection(db, "users"), where("email", "==", email));
+                const userSnap = await getDocs(q);
+                if (!userSnap.empty) {
+                    targetUid = userSnap.docs[0].id;
+                } else {
+                    console.warn("Impossible de trouver l'UID pour l'email:", email);
+                    return showToast("Profil technique manquant. Demandez à l'utilisateur de recliquer sur 'Demander validation'.", 'error', 8000);
                 }
             }
 
-            // 1. Mark user as manualVerified in users collection
-            await setDoc(doc(db, "users", targetUid), { manualVerified: true }, { merge: true });
-            // 2. Update request status
+            console.log("Validation en cours pour UID:", targetUid);
+            
+            // 1. On crée ou met à jour le profil (setDoc crée le doc s'il n'existe pas)
+            await setDoc(doc(db, "users", targetUid), { 
+                manualVerified: true,
+                email: email,
+                updatedAt: new Date().toISOString()
+            }, { merge: true });
+
+            // 2. On marque la demande comme approuvée
             await updateDoc(doc(db, "verification_requests", requestId), { status: 'approved' });
             
             showToast("Utilisateur validé avec succès !", 'success');
         } catch (e) {
-            console.error("Write failed", e);
-            showToast("Erreur d'écriture : Avez-vous cliqué sur Publier dans les règles ?", 'error', 6000);
+            console.error("Erreur détaillée lors de la validation:", e);
+            if (e.code === 'permission-denied') {
+                showToast("Permission refusée. Vérifiez que les règles Firestore sont bien publiées.", 'error', 8000);
+            } else {
+                showToast("Erreur technique. Vérifiez la console (F12).", 'error', 6000);
+            }
         }
     }
     function listenToSupportTickets() {
