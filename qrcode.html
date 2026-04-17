@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code - Activité Surprise</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #0f1a0a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            flex-direction: column;
+            gap: 24px;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            color: #a8e063;
+            font-size: 22px;
+            text-align: center;
+        }
+
+        .qr-outer {
+            background: #0f1a0a;
+            padding: 20px;
+            border-radius: 28px;
+            box-shadow:
+                0 0 50px rgba(130, 230, 40, 0.7),
+                0 0 100px rgba(80, 200, 20, 0.3);
+        }
+
+        .qr-inner {
+            background: radial-gradient(ellipse at 30% 30%, #d4f576 0%, #8dd639 45%, #3a8f15 100%);
+            border-radius: 20px;
+            padding: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        canvas#qr-canvas {
+            display: block;
+        }
+
+        .subtitle {
+            color: #c8f06a;
+            font-size: 14px;
+            text-align: center;
+            opacity: 0.85;
+        }
+
+        .url-label {
+            color: #6b9448;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, #56ab2f, #a8e063);
+            color: #1a3a08;
+            border: none;
+            padding: 14px 36px;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 8px 20px rgba(86, 171, 47, 0.4);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🎲 Activité Surprise</h1>
+    <div class="qr-outer">
+        <div class="qr-inner">
+            <canvas id="qr-canvas"></canvas>
+        </div>
+    </div>
+    <p class="subtitle">📷 Scannez pour accéder à l'application</p>
+    <p class="url-label">https://androlink.web.app</p>
+    <button class="download-btn" onclick="downloadQR()">⬇ Télécharger le QR Code</button>
+
+    <!-- qrcodejs for matrix generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script>
+        const URL_TARGET = "https://androlink.web.app";
+
+        // 1. Create QRCode object to extract the module matrix
+        const tempDiv = document.createElement('div');
+        document.body.appendChild(tempDiv);
+        const qrObj = new QRCode(tempDiv, {
+            text: URL_TARGET,
+            width: 256,
+            height: 256,
+            correctLevel: QRCode.CorrectLevel.H
+        });
+
+        // Access the internal module map
+        const qrMatrix = qrObj._oQRCode.modules;
+        const moduleCount = qrMatrix.length; // e.g. 41
+        document.body.removeChild(tempDiv);
+
+        // 2. Draw the styled QR code on canvas
+        const CELL = 11;        // pixels per module
+        const PADDING = 3;      // modules of quiet zone
+        const TOTAL_MODULES = moduleCount + PADDING * 2;
+        const CANVAS_SIZE = TOTAL_MODULES * CELL;
+
+        const canvas = document.getElementById('qr-canvas');
+        canvas.width = CANVAS_SIZE;
+        canvas.height = CANVAS_SIZE;
+        const ctx = canvas.getContext('2d');
+
+        // Background: transparent (wrapper provides gradient)
+        ctx.clearRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
+
+        const DARK_COLOR = '#1a5208';  // dark forest green for modules
+        const LIGHT_COLOR = 'rgba(0,0,0,0)'; // transparent for empty modules
+
+        function drawRoundedRect(x, y, w, h, r, color) {
+            ctx.beginPath();
+            ctx.moveTo(x + r, y);
+            ctx.lineTo(x + w - r, y);
+            ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+            ctx.lineTo(x + w, y + h - r);
+            ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+            ctx.lineTo(x + r, y + h);
+            ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+            ctx.lineTo(x, y + r);
+            ctx.quadraticCurveTo(x, y, x + r, y);
+            ctx.closePath();
+            ctx.fillStyle = color;
+            ctx.fill();
+        }
+
+        // Helper: is this module inside a finder pattern?
+        function isFinderZone(row, col) {
+            const n = moduleCount;
+            return (
+                (row < 8 && col < 8) ||          // top-left
+                (row < 8 && col >= n - 8) ||     // top-right
+                (row >= n - 8 && col < 8)         // bottom-left
+            );
+        }
+
+        // Draw data modules (rounded dots)
+        for (let row = 0; row < moduleCount; row++) {
+            for (let col = 0; col < moduleCount; col++) {
+                if (qrMatrix[row][col] && !isFinderZone(row, col)) {
+                    const x = (PADDING + col) * CELL + 1;
+                    const y = (PADDING + row) * CELL + 1;
+                    const s = CELL - 2;
+                    drawRoundedRect(x, y, s, s, s * 0.38, DARK_COLOR);
+                }
+            }
+        }
+
+        // Draw finder patterns as styled squares
+        function drawFinder(startRow, startCol) {
+            const ox = (PADDING + startCol) * CELL;
+            const oy = (PADDING + startRow) * CELL;
+            const total = 7 * CELL;
+
+            // Outer square
+            ctx.fillStyle = DARK_COLOR;
+            ctx.beginPath();
+            ctx.roundRect(ox, oy, total, total, 6);
+            ctx.fill();
+
+            // White gap
+            ctx.fillStyle = 'rgba(200, 240, 100, 0.9)';
+            ctx.beginPath();
+            ctx.roundRect(ox + CELL, oy + CELL, 5 * CELL, 5 * CELL, 4);
+            ctx.fill();
+
+            // Inner dot
+            ctx.fillStyle = DARK_COLOR;
+            ctx.beginPath();
+            ctx.roundRect(ox + 2 * CELL, oy + 2 * CELL, 3 * CELL, 3 * CELL, 4);
+            ctx.fill();
+        }
+
+        drawFinder(0, 0);
+        drawFinder(0, moduleCount - 7);
+        drawFinder(moduleCount - 7, 0);
+
+        // 3. Draw logo in center
+        const logoImg = new Image();
+        logoImg.src = 'images/Icon_Activite-Surprise_192x192.png';
+        logoImg.onload = () => drawLogo(logoImg);
+        logoImg.onerror = () => {
+            // Fallback: draw emoji placeholder
+            const cx = CANVAS_SIZE / 2;
+            const cy = CANVAS_SIZE / 2;
+            ctx.fillStyle = 'rgba(200, 240, 100, 0.9)';
+            ctx.beginPath();
+            ctx.roundRect(cx - 32, cy - 32, 64, 64, 12);
+            ctx.fill();
+            ctx.font = '38px serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('🎲', cx, cy);
+        };
+
+        function drawLogo(img) {
+            const logoSize = CELL * 9;
+            const lx = (CANVAS_SIZE - logoSize) / 2;
+            const ly = (CANVAS_SIZE - logoSize) / 2;
+            const r = logoSize * 0.2;
+
+            // White background bubble behind logo
+            ctx.fillStyle = 'rgba(210, 245, 120, 0.95)';
+            ctx.beginPath();
+            ctx.roundRect(lx - 5, ly - 5, logoSize + 10, logoSize + 10, r + 5);
+            ctx.fill();
+
+            // Clip and draw logo
+            ctx.save();
+            ctx.beginPath();
+            ctx.roundRect(lx, ly, logoSize, logoSize, r);
+            ctx.clip();
+            ctx.drawImage(img, lx, ly, logoSize, logoSize);
+            ctx.restore();
+        }
+
+        // 4. Download function — renders onto an export canvas with outer glow
+        function downloadQR() {
+            const EXPORT = 700;
+            const ex = document.createElement('canvas');
+            ex.width = EXPORT;
+            ex.height = EXPORT;
+            const ec = ex.getContext('2d');
+
+            // Background
+            ec.fillStyle = '#0f1a0a';
+            ec.fillRect(0, 0, EXPORT, EXPORT);
+
+            // Glow
+            ec.save();
+            ec.shadowBlur = 60;
+            ec.shadowColor = 'rgba(140, 230, 40, 0.8)';
+
+            // Gradient card
+            const g = ec.createRadialGradient(EXPORT / 2, EXPORT / 2 - 50, 10, EXPORT / 2, EXPORT / 2, EXPORT / 2);
+            g.addColorStop(0, '#d4f576');
+            g.addColorStop(0.5, '#8dd639');
+            g.addColorStop(1, '#3a8f15');
+            const PAD = 30;
+            ec.fillStyle = g;
+            ec.beginPath();
+            ec.roundRect(PAD, PAD, EXPORT - PAD * 2, EXPORT - PAD * 2, 22);
+            ec.fill();
+            ec.restore();
+
+            // QR code on top, centered
+            const qrSize = EXPORT - PAD * 4.5;
+            const qrX = (EXPORT - qrSize) / 2;
+            const qrY = (EXPORT - qrSize) / 2;
+            ec.drawImage(canvas, qrX, qrY, qrSize, qrSize);
+
+            const link = document.createElement('a');
+            link.download = 'QRCode_Activite_Surprise.png';
+            link.href = ex.toDataURL('image/png');
+            link.click();
+        }
+    </script>
+</body>
+
+</html>

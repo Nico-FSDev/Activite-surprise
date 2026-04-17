@@ -1,0 +1,38 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Allow users to request manual verification even if not authenticated
+    match /verification_requests/{request} {
+      allow create: if true; // Required for help button from login page
+      allow read, update, delete: if request.auth != null && request.auth.token.email == 'n.lohberger@gmail.com';
+    }
+
+    // Support tickets and bug reports
+    match /support_tickets/{ticket} {
+      allow create: if true; // Any user can submit a ticket
+      allow read, update, delete: if request.auth != null && request.auth.token.email == 'n.lohberger@gmail.com';
+    }
+
+
+    // Global stats for admin
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+      allow read, update: if request.auth != null && request.auth.token.email == 'n.lohberger@gmail.com';
+    }
+    
+    match /activities/{activityId} {
+      allow read: if request.auth != null && request.auth.token.email == 'n.lohberger@gmail.com';
+      allow read, write: if request.auth != null;
+    }
+
+    match /participants/{participantId} {
+      allow read, write: if request.auth != null;
+    }
+
+    match /notifications/{notifId} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}

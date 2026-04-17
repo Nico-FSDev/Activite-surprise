@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Activité Surprise</title>
+    <meta name="description" content="Tire au sort une activité en famille">
+    <link rel="icon" type="image/png" href="images/Icon_Activite-Surprise_192x192.png">
+    <link rel="manifest" href="manifest.json">
+    <!-- External Libraries (Professional Modules) -->
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
+    <link rel="stylesheet" href="style.css">
+    <meta name="theme-color" content="#56ab2f">
+    <link rel="apple-touch-icon" href="images/Icon_Activite-Surprise_192x192.png">
+</head>
+<body>
+    <div id="auth-container" class="auth-view active">
+        <div class="auth-card glass animate-pop">
+            <div class="auth-header">
+                <img src="images/Icon_Activite-Surprise_192x192.png" alt="Logo" class="auth-logo">
+                <h1 id="auth-title">Activité Surprise</h1>
+                <p id="auth-subtitle">Bienvenue dans votre espace famille</p>
+            </div>
+
+            <!-- Auth Mode Switcher -->
+            <div class="auth-tabs">
+                <button class="auth-tab active" id="tab-login">Connexion</button>
+                <button class="auth-tab" id="tab-signup">Inscription</button>
+            </div>
+            
+            <div id="auth-error-msg" class="error-text"></div>
+            
+            <form id="login-form">
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required placeholder="nom@exemple.com">
+                </div>
+                <div class="input-group">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" id="password" required placeholder="••••••••">
+                </div>
+                <div class="input-group hidden" id="group-confirm-password">
+                    <label for="confirm-password">Confirmer le mot de passe</label>
+                    <input type="password" id="confirm-password" placeholder="••••••••">
+                </div>
+                <button type="submit" class="primary-btn glow" id="auth-submit-btn">Se connecter</button>
+                <button type="button" id="btn-support-login" class="text-btn" style="margin-top: 15px; font-size: 0.85rem; width: 100%; color: var(--text-muted);">
+                    Problème de connexion ou de mot de passe ?
+                </button>
+            </form>
+
+            <!-- Verification Pending View (Hidden) -->
+            <div id="verification-screen" class="hidden">
+                <div class="v-icon"><i class='bx bx-mail-send'></i></div>
+                <h2>Vérifiez vos emails</h2>
+                <p>Un lien de validation a été envoyé à <strong><span id="user-v-email"></span></strong>. Cliquez sur le lien pour activer votre compte.</p>
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 20px;">
+                    <button id="btn-resend-v" class="secondary-btn wide">Renvoyer le lien</button>
+                    <button id="btn-request-admin-v" class="secondary-btn glass wide" style="margin-top: 5px; font-size: 0.9rem;">Problème de validation ? Demander à l'admin</button>
+                    <button id="btn-back-login" class="text-btn" style="color:white; opacity:0.7">Retour à la connexion</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="app-shell" class="hidden">
+        <!-- Desktop Sidebar -->
+        <aside class="sidebar glass">
+            <div class="sidebar-header">
+                <div class="logo-box">✨</div>
+                <h2>Activité Surprise</h2>
+            </div>
+
+            <nav class="nav-list">
+                <div class="nav-item active" data-view="home">
+                    <i class='bx bx-home-alt'></i>
+                    <span data-i18n="title_home">Accueil</span>
+                </div>
+                <div class="nav-item" data-view="management">
+                    <i class='bx bx-heart'></i>
+                    <span data-i18n="title_favs">Favoris</span>
+                </div>
+                <div class="nav-item" data-view="calendar">
+                    <i class='bx bx-map-alt'></i>
+                    <span data-i18n="title_discover">Découvrir</span>
+                </div>
+                <div class="nav-item" data-view="stats">
+                    <i class='bx bx-trophy'></i>
+                    <span data-i18n="title_challenges">Défis</span>
+                </div>
+                <div class="nav-item" data-view="participants">
+                    <i class='bx bx-user'></i>
+                    <span data-i18n="title_profile">Profil</span>
+                </div>
+                <div class="nav-item admin-only hidden" data-view="admin" id="nav-admin">
+                    <i class='bx bxs-shield-check' style="color: #60a5fa"></i>
+                    <span>Administration</span>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="nav-item" data-view="settings" id="nav-settings">
+                    <i class='bx bx-slider-alt'></i>
+                    <span>Paramètres</span>
+                </div>
+                <div class="user-profile">
+                    <div class="user-avatar-mini">M</div>
+                    <div class="user-info">
+                        <h4 id="display-name">Utilisateur</h4>
+                        <p>Famille Heureuse</p>
+                    </div>
+                </div>
+                <button id="logout-btn" class="nav-item logout-link" style="border:none; width:100%; text-align:left; background:none;">
+                    <i class='bx bx-log-out'></i>
+                    <span>Déconnexion</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-layout">
+            <!-- Mobile Header -->
+            <header class="mobile-header" style="position:relative;">
+                <div class="user-greeting">
+                    <img src="images/user_profile_marie.png" alt="Profile" class="avatar-small">
+                    <div class="greeting-text">
+                        <span class="greeting"><span data-i18n="hello">Bonjour</span>, <span id="display-name-mobile">Marie</span></span>
+                        <span class="sub-greeting" id="current-date">Aujourd'hui</span>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="icon-btn notification-trigger" id="btn-mobile-notif" title="Notifications">
+                        <i class='bx bxs-bell'></i>
+                        <span class="notif-badge hidden">0</span>
+                    </button>
+                    <button class="icon-btn search" id="btn-mobile-search">🔍</button>
+                    <button class="icon-btn menu" id="btn-mobile-menu">☰</button>
+                </div>
+                
+                <!-- Expanded Mobile Search Overlay -->
+                <div id="mobile-search-panel" class="hidden" style="position: absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(to bottom, #72cf42, #56ab2f); display:none; align-items:center; padding: 0 20px; z-index: 5;">
+                     <input type="text" id="mobile-search-input" placeholder="Chercher une activité..." style="flex:1; border-radius:20px; border:none; padding:10px 15px; outline:none; font-family:inherit;">
+                     <button id="btn-close-search" style="background:none; border:none; color:white; font-size:2.125rem; margin-left:15px; cursor:pointer;">×</button>
+                </div>
+            </header>
+
+            <main id="content-area">
+                <!-- Desktop Fixed Notifications -->
+                <div class="desktop-notif-bar h-mobile-hide">
+                    <button class="icon-btn-notif notification-trigger" id="btn-desktop-notif">
+                        <i class='bx bxs-bell'></i>
+                        <span class="notif-badge hidden">0</span>
+                    </button>
+                </div>
+
+                <!-- Edit Participant Modal -->
+            <div id="modal-edit-participant" class="overlay hidden">
+                <div class="winner-content glass animate-pop" style="max-width: 400px; padding: 30px;">
+                    <div class="view-header" style="margin-bottom: 20px;">
+                        <h2 data-i18n="edit_member">Modifier le membre</h2>
+                        <p>Mettez à jour les informations de votre famille.</p>
+                    </div>
+                    <div class="input-box" style="display: flex; flex-direction: column; gap: 15px;">
+                        <input type="text" id="edit-p-name" placeholder="Nom du membre">
+                        <input type="email" id="edit-p-email" placeholder="Email (optionnel)">
+                        <select id="edit-p-relation" class="modern-input">
+                            <option value="">Lien de parenté...</option>
+                            <option value="Couple">Couple</option>
+                            <option value="Marié">Marié(e)</option>
+                            <option value="Fils">Fils</option>
+                            <option value="Fille">Fille</option>
+                            <option value="Père">Père</option>
+                            <option value="Mère">Mère</option>
+                            <option value="Grand-Père">Grand-Père</option>
+                            <option value="Grand-Mère">Grand-Mère</option>
+                            <option value="Petit-Fils">Petit-Fils</option>
+                            <option value="Petite-Fille">Petite-Fille</option>
+                            <option value="Tante">Tante</option>
+                            <option value="Tonton">Tonton</option>
+                            <option value="Cousin">Cousin</option>
+                            <option value="Cousine">Cousine</option>
+                        </select>
+                        <div style="display: flex; gap: 10px; margin-top: 10px;">
+                            <button id="btn-save-edit-p" class="primary-btn wide glass">Sauvegarder</button>
+                            <button id="btn-cancel-edit-p" class="secondary-btn wide glass">Annuler</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Support Ticket Modal -->
+            <div id="modal-support-ticket" class="overlay hidden">
+                <div class="winner-content glass animate-pop" style="max-width: 400px; padding: 30px;">
+                    <div class="view-header" style="margin-bottom: 20px;">
+                        <h2>Support / Signalement</h2>
+                        <p>Dites-nous quel est le problème.</p>
+                    </div>
+                    <div class="input-box" style="display: flex; flex-direction: column; gap: 15px;">
+                        <input type="email" id="support-email" placeholder="Votre email">
+                        <select id="support-type" class="modern-input">
+                            <option value="" disabled selected>Type de problème...</option>
+                            <option value="connexion">Problème de connexion / Mot de passe</option>
+                            <option value="bug">Signalement de bug</option>
+                            <option value="autre">Autre demande</option>
+                        </select>
+                        <textarea id="support-desc" class="modern-input" placeholder="Décrivez votre problème en quelques mots..." rows="3"></textarea>
+                        
+                        <div style="display: flex; gap: 10px; margin-top: 10px;">
+                            <button id="btn-submit-support" class="primary-btn wide glass">Envoyer</button>
+                            <button id="btn-cancel-support" class="secondary-btn wide glass">Annuler</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Notification Drawer (Sleek Blur) -->
+                <div id="notification-panel" class="notification-dropdown glass hidden">
+                    <div class="notif-header">
+                        <h4>Notifications</h4>
+                        <button id="btn-clear-notifs" class="text-btn">Tout effacer</button>
+                    </div>
+                    <div id="notif-list" class="notif-list">
+                        <div class="notif-placeholder">Pas de nouvelles demandes</div>
+                    </div>
+                </div>
+
+                <!-- Home View (Vibrant Mobile Lifestyle) -->
+                <section id="view-home" class="app-view active">
+                    <!-- Mobile View -->
+                    <div class="hero-card-mobile h-desktop-hide">
+                        <div class="hero-img-box">
+                            <img src="images/baking_activity_illustration.png" alt="Activity">
+                        </div>
+                        <div class="hero-body">
+                            <span class="hero-badge" data-i18n="hero_badge">L'activité du moment :</span>
+                            <h2 class="hero-title">Faire de la pâtisserie 🧁</h2>
+                            <div class="hero-subtitle">
+                                <i class='bx bx-time-five'></i>
+                                <span>2h • Ingrédients & Rires</span>
+                            </div>
+                            <p class="hero-desc">Rassemblez la famille pour préparer de délicieux cupcakes décorés !</p>
+                        </div>
+                    </div>
+
+                    <!-- Desktop View Only -->
+                    <div class="hero-carousel glass h-mobile-hide">
+                        <img src="images/baking_activity_illustration.png" alt="Hero" class="hero-image">
+                        <div class="hero-content">
+                            <span class="badge" data-i18n="hero_badge">L'activité du moment :</span>
+                            <h2>Faire de la pâtisserie 🧁👨‍🍳</h2>
+                            <h3>Ingrédients & Éclat de Rire !</h3>
+                            <p>Rassemblez la famille pour préparer de délicieux cupcakes décorés ! Farine, œufs et bonne humeur au programme.</p>
+                        </div>
+                    </div>
+
+                    <!-- Home Filters -->
+                    <div class="filters-panel glass" style="margin-top: 20px;">
+                        <div class="filter-group">
+                            <span class="filter-label" data-i18n="filter_themes">Thèmes pour la Roulette :</span>
+                            <div class="filter-toggles" data-filter-type="themes">
+                                <button class="toggle-btn" data-theme="Bien-être">🧘 Bien-être & Sport</button>
+                                <button class="toggle-btn" data-theme="Créativité">🎨 Créativité & Maison</button>
+                                <button class="toggle-btn" data-theme="Romantique">❤️ Projets Romantiques</button>
+                                <button class="toggle-btn" data-theme="Jeux">🎮 Jeux & Cinéma</button>
+                                <button class="toggle-btn" data-theme="Gastronomie">🍽️ Gastronomie</button>
+                                <button class="toggle-btn" data-theme="Balades">🏺 Culture & Balades</button>
+                                <button class="toggle-btn" data-theme="Nature">🌳 Nature & Excursions</button>
+                                <button class="toggle-btn" data-theme="Insolite">✨ Insolite</button>
+                            </div>
+                        </div>
+                        <div class="filter-row-flex">
+                            <div class="filter-group">
+                                <span class="filter-label">Configuration :</span>
+                                <div class="filter-toggles" data-filter-type="types">
+                                    <button class="toggle-btn" data-type="seul">👤 Seul</button>
+                                    <button class="toggle-btn" data-type="couple">👫 En couple</button>
+                                    <button class="toggle-btn" data-type="famille">👨‍👩‍👧‍👦 En famille</button>
+                                </div>
+                            </div>
+                            <div class="filter-group">
+                                <span class="filter-label">Note minimum :</span>
+                                <div class="filter-toggles rating-filter" data-filter-type="rating">
+                                    <button class="toggle-btn" data-rating="1">⭐</button>
+                                    <button class="toggle-btn" data-rating="2">⭐⭐</button>
+                                    <button class="toggle-btn" data-rating="3">⭐⭐⭐</button>
+                                    <button class="toggle-btn" data-rating="4">⭐⭐⭐⭐</button>
+                                    <button class="toggle-btn" data-rating="5">⭐⭐⭐⭐⭐</button>
+                                </div>
+                            </div>
+                            <div class="filter-group">
+                                <span class="filter-label">Budget max :</span>
+                                <div class="filter-toggles" data-filter-type="price">
+                                    <button class="toggle-btn" data-price="1">Gratuit</button>
+                                    <button class="toggle-btn" data-price="2">€</button>
+                                    <button class="toggle-btn" data-price="3">€€</button>
+                                    <button class="toggle-btn" data-price="4">€€€</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Universal Roulette Section -->
+                    <div class="discovery-section">
+                        <div class="roulette-wrapper">
+                            <div class="roulette-pointer">▼</div>
+                            <div id="roulette-container">
+                                <!-- SVG Wheel injected here -->
+                                <div class="roulette-placeholder">Initialisation...</div>
+                            </div>
+                            <button id="btn-spin" class="spin-center-btn" data-i18n="btn_spin">SPIN</button>
+                            
+                            <!-- Winner Overlay (Hidden by default) -->
+                            <div id="winner-overlay" class="winner-overlay hidden">
+                                <div class="winner-content glass">
+                                    <h3>Activité Choisie !</h3>
+                                    <h2 id="winner-title">Titre</h2>
+                                    
+                                    <div class="winner-rating-box">
+                                        <p>Noter cette activité :</p>
+                                        <div class="interactive-stars" id="winner-stars">
+                                            <i class='bx bxs-star' data-val="1"></i>
+                                            <i class='bx bxs-star' data-val="2"></i>
+                                            <i class='bx bxs-star' data-val="3"></i>
+                                            <i class='bx bxs-star' data-val="4"></i>
+                                            <i class='bx bxs-star' data-val="5"></i>
+                                        </div>
+                                    </div>
+
+                                    <button id="btn-close-winner" class="primary-btn" data-i18n="btn_close">Fermer & Valider</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Universal History Section -->
+                    <div class="history-section margin-top-20">
+                        <h3 class="section-title">Dernières Activités</h3>
+                        <div id="chips-container" class="chips-container">
+                            <div class="activity-chip">🚲 Vélo</div>
+                            <div class="activity-chip">🧺 Pique-nique</div>
+                            <div class="activity-chip">🧩 Jeux</div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Management View (Inspiration Screen 1) -->
+                <section id="view-management" class="app-view">
+                    <div class="view-header flex-header">
+                        <div>
+                            <h2>Gestion des Activités</h2>
+                            <p>Gérez, organisez et filtrez vos activités surprises.</p>
+                        </div>
+                        <button id="btn-import-defaults" class="secondary-btn"><i class='bx bx-import'></i> Liste par défaut</button>
+                    </div>
+
+                    <!-- Filter Bar -->
+                    <div class="filters-panel glass">
+                        <div class="filter-group">
+                            <span class="filter-label">Thèmes :</span>
+                            <div class="filter-toggles" data-filter-type="themes">
+                                <button class="toggle-btn" data-theme="Bien-être">🧘 Bien-être & Sport</button>
+                                <button class="toggle-btn" data-theme="Créativité">🎨 Créativité & Maison</button>
+                                <button class="toggle-btn" data-theme="Romantique">❤️ Projets Romantiques</button>
+                                <button class="toggle-btn" data-theme="Jeux">🎮 Jeux & Cinéma</button>
+                                <button class="toggle-btn" data-theme="Gastronomie">🍽️ Gastronomie</button>
+                                <button class="toggle-btn" data-theme="Balades">🏺 Culture & Balades</button>
+                                <button class="toggle-btn" data-theme="Nature">🌳 Nature & Excursions</button>
+                                <button class="toggle-btn" data-theme="Insolite">✨ Insolite</button>
+                            </div>
+                        </div>
+                        
+                        <div class="filter-row-flex">
+                            <div class="filter-group">
+                                <span class="filter-label">Configuration :</span>
+                                <div class="filter-toggles" data-filter-type="types">
+                                    <button class="toggle-btn" data-type="seul">👤 Seul</button>
+                                    <button class="toggle-btn" data-type="couple">👫 En couple</button>
+                                    <button class="toggle-btn" data-type="famille">👨‍👩‍👧‍👦 En famille</button>
+                                </div>
+                            </div>
+                            <div class="filter-group">
+                                <span class="filter-label">Note minimum :</span>
+                                <div class="filter-toggles rating-filter" data-filter-type="rating">
+                                    <button class="toggle-btn" data-rating="1">⭐</button>
+                                    <button class="toggle-btn" data-rating="2">⭐⭐</button>
+                                    <button class="toggle-btn" data-rating="3">⭐⭐⭐</button>
+                                    <button class="toggle-btn" data-rating="4">⭐⭐⭐⭐</button>
+                                    <button class="toggle-btn" data-rating="5">⭐⭐⭐⭐⭐</button>
+                                </div>
+                            </div>
+                            <div class="filter-group">
+                                <span class="filter-label">Budget max :</span>
+                                <div class="filter-toggles" data-filter-type="price">
+                                    <button class="toggle-btn" data-price="1">Gratuit</button>
+                                    <button class="toggle-btn" data-price="2">€</button>
+                                    <button class="toggle-btn" data-price="3">€€</button>
+                                    <button class="toggle-btn" data-price="4">€€€</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="management-grid">
+                        <div class="add-activity-card glass">
+                            <div class="pro-add-box">
+                                <h3>Ajouter une activité</h3>
+                                <textarea id="pro-activity-input" class="modern-input" placeholder="Titre de l'activité..." rows="2"></textarea>
+                                
+                                <select id="pro-activity-theme" class="modern-input preset-select">
+                                    <option value="" disabled selected>Choisir un thème</option>
+                                    <option value="Bien-être">🧘 Bien-être & Sport</option>
+                                    <option value="Créativité">🎨 Créativité & Maison</option>
+                                    <option value="Romantique">❤️ Projets Romantiques</option>
+                                    <option value="Jeux">🎮 Jeux & Cinéma</option>
+                                    <option value="Gastronomie">🍽️ Gastronomie</option>
+                                    <option value="Balades">🏺 Culture & Balades</option>
+                                    <option value="Nature">🌳 Nature & Excursions</option>
+                                    <option value="Insolite">✨ Insolite</option>
+                                </select>
+
+                                <div class="add-options">
+                                    <div class="type-checkers">
+                                        <label><input type="checkbox" value="seul" class="add-type-chk"> 👤 Seul</label>
+                                        <label><input type="checkbox" value="couple" class="add-type-chk" checked> 👫 Couple</label>
+                                        <label><input type="checkbox" value="famille" class="add-type-chk"> 👨‍👩‍👧‍👦 Famille</label>
+                                    </div>
+                                    <div class="rating-select">
+                                        Note: <input type="number" id="add-rating" min="1" max="5" value="3" class="modern-input compact-input">
+                                    </div>
+                                </div>
+                                
+                                <button id="btn-add-pro" class="primary-btn">
+                                    <i class='bx bx-plus'></i>
+                                    <span>Ajouter l'activité</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="activities-list-container">
+                            <div class="tab-scrolled">
+                                <button class="tab-link active" data-tab="available">Disponibles <span id="count-available" class="badge-count">0</span></button>
+                                <button class="tab-link" data-tab="done">Déjà faites <span id="count-done" class="badge-count">0</span></button>
+                            </div>
+
+                            <div id="pro-list-available" class="activity-cards-list active">
+                                <!-- Cards injected here -->
+                            </div>
+                            <div id="pro-list-done" class="activity-cards-list">
+                                <!-- Cards injected here -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="view-calendar" class="app-view">
+                    <div class="view-header">
+                        <h2>Calendrier des Activités</h2>
+                        <p>Planifiez et visualisez vos moments en famille.</p>
+                    </div>
+                    <div id="calendar-container" class="glass"></div>
+                </section>
+
+                <section id="view-participants" class="app-view">
+                    <div class="view-header">
+                        <h2>Membres de la Famille</h2>
+                        <p>Gérez les participants pour vos activités.</p>
+                    </div>
+                    <div class="participants-grid">
+                        <div class="add-participant-card glass">
+                            <h3 data-i18n="add_member">Ajouter un membre</h3>
+                            <div class="input-box" style="display: flex; flex-direction: column; gap: 12px;">
+                                <input type="text" id="participant-name" placeholder="Nom du membre">
+                                <input type="email" id="participant-email" placeholder="Email (optionnel)">
+                                <select id="participant-relation" class="modern-input" style="margin-bottom: 0;">
+                                    <option value="">Lien de parenté...</option>
+                                    <option value="Couple">Couple</option>
+                                    <option value="Marié">Marié(e)</option>
+                                    <option value="Fils">Fils</option>
+                                    <option value="Fille">Fille</option>
+                                    <option value="Père">Père</option>
+                                    <option value="Mère">Mère</option>
+                                    <option value="Grand-Père">Grand-Père</option>
+                                    <option value="Grand-Mère">Grand-Mère</option>
+                                    <option value="Petit-Fils">Petit-Fils</option>
+                                    <option value="Petite-Fille">Petite-Fille</option>
+                                    <option value="Tante">Tante</option>
+                                    <option value="Tonton">Tonton</option>
+                                    <option value="Cousin">Cousin</option>
+                                    <option value="Cousine">Cousine</option>
+                                </select>
+                                <button id="btn-add-participant" class="primary-btn wide">Ajouter le membre</button>
+                            </div>
+                        </div>
+                        <div id="participants-list" class="participant-list-grid">
+                            <!-- Participant cards injected here -->
+                        </div>
+                    </div>
+                </section>
+
+                <section id="view-stats" class="app-view">
+                    <div class="view-header">
+                        <h2>Analyses & Statistiques</h2>
+                        <p>Découvrez votre historique d'activités.</p>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-card glass">
+                            <h3>Répartition des Activités</h3>
+                            <canvas id="chart-doughnut"></canvas>
+                        </div>
+                        <div class="stat-card glass">
+                            <h3>Activité Hebdomadaire</h3>
+                            <canvas id="chart-bar"></canvas>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="view-admin" class="app-view">
+                    <div class="view-header">
+                        <h2>Centre d'Administration</h2>
+                        <p>Gestion globale de la plateforme Activité Surprise.</p>
+                    </div>
+
+                    <div class="admin-grid">
+                        <!-- Stats Overview -->
+                        <div class="stats-overview-row">
+                            <div class="stat-mini-card glass">
+                                <span class="stat-label">Utilisateurs</span>
+                                <span class="stat-value" id="admin-stat-users">-</span>
+                            </div>
+                            <div class="stat-mini-card glass">
+                                <span class="stat-label">Activités totales</span>
+                                <span class="stat-value" id="admin-stat-activities">-</span>
+                            </div>
+                            <div class="stat-mini-card glass">
+                                <span class="stat-label">Demandes en attente</span>
+                                <span class="stat-value" id="admin-stat-requests">-</span>
+                            </div>
+                        </div>
+
+                        <!-- Main Admin Panels -->
+                        <div class="admin-panels">
+                            <div class="admin-card glass">
+                                <div class="admin-card-header">
+                                    <i class='bx bx-time-five'></i>
+                                    <h3>Demandes de validation manuelle</h3>
+                                </div>
+                                <div class="admin-card-body">
+                                    <div id="admin-view-requests-list" class="admin-requests-list-full">
+                                        <div class="notif-placeholder">Chargement des demandes...</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="admin-card glass">
+                                <div class="admin-card-header">
+                                    <i class='bx bx-message-error'></i>
+                                    <h3>Tickets de Support & Bugs</h3>
+                                </div>
+                                <div class="admin-card-body">
+                                    <div id="admin-support-tickets-list" class="admin-requests-list-full">
+                                        <div class="notif-placeholder">Chargement des tickets...</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="view-settings" class="app-view">
+                    <div class="view-header">
+                        <h2>Paramètres</h2>
+                        <p>Personnalisez votre expérience familiale.</p>
+                    </div>
+                    
+                    <div class="settings-grid">
+                        <!-- Profile Card -->
+                        <div class="settings-card glass">
+                            <div class="s-card-header">
+                                <i class='bx bx-user-circle'></i>
+                                <h3>Mon Profil</h3>
+                            </div>
+                            <div class="s-card-body">
+                                <div class="input-group">
+                                    <label>Nom d'affichage</label>
+                                    <input type="text" id="settings-display-name" class="modern-input" placeholder="Votre nom">
+                                    <p id="profile-email-display" style="font-size: 0.8rem; opacity: 0.5; margin-top: 8px;"></p>
+                                </div>
+                                <button id="btn-save-profile" class="primary-btn">Enregistrer les modifications</button>
+                            </div>
+                        </div>
+
+                        <!-- Privacy & Connection -->
+                        <div class="settings-card glass" id="card-privacy">
+                            <div class="s-card-header">
+                                <i class='bx bx-shield-quarter'></i>
+                                <h3>Confidentialité</h3>
+                            </div>
+                            <div class="s-card-body">
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <h4>Demandes de connexion</h4>
+                                        <p>Autoriser les membres à vous trouver par e-mail.</p>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" id="setting-allow-requests" checked>
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Share App (QR Code) -->
+                        <div class="settings-card glass" id="card-share">
+                            <div class="s-card-header">
+                                <i class='bx bx-share-alt'></i>
+                                <h3>Partager l'application</h3>
+                            </div>
+                            <div class="s-card-body">
+                                <div class="qr-container-settings">
+                                    <div id="qr-hidden-renderer" style="display: none;"></div>
+                                    <canvas id="qr-canvas-settings"></canvas>
+                                </div>
+                                <p class="qr-tip">Scannez ce code pour partager l'aventure en famille !</p>
+                                <button id="btn-download-qr" class="primary-btn glass" style="margin-top: 15px;">
+                                    <i class='bx bx-download'></i>
+                                    <span>Télécharger le QR Code</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Appearance -->
+                        <div class="settings-card glass" id="card-appearance">
+                            <div class="s-card-header">
+                                <i class='bx bx-palette'></i>
+                                <h3 data-i18n="settings_appearance">Apparence</h3>
+                            </div>
+                            <div class="s-card-body">
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <h4 data-i18n="settings_light_mode">Thème Clair</h4>
+                                        <p data-i18n="settings_light_mode_desc">Utiliser des couleurs plus lumineuses.</p>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" id="setting-light-mode">
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Preferences (Language & Sound) -->
+                        <div class="settings-card glass">
+                            <div class="s-card-header">
+                                <i class='bx bx-cog'></i>
+                                <h3 data-i18n="settings_prefs">Préférences</h3>
+                            </div>
+                            <div class="s-card-body">
+                                <div class="setting-item" style="margin-bottom: 20px;">
+                                    <div class="setting-info">
+                                        <h4 data-i18n="settings_language">Langue</h4>
+                                        <p data-i18n="settings_language_desc">Choisir la langue de l'application.</p>
+                                    </div>
+                                    <select id="setting-language" class="compact-input modern-input" style="width: auto; margin-bottom: 0;">
+                                        <option value="fr">Français 🇫🇷</option>
+                                        <option value="en">English 🇬🇧</option>
+                                    </select>
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <h4 data-i18n="settings_sounds">Sons d'interface</h4>
+                                        <p data-i18n="settings_sounds_desc">Activer les effets sonores.</p>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" id="setting-sounds" checked>
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Admin: Validation des comptes (Visible only for n.lohberger@gmail.com) -->
+                        <div class="settings-card glass hidden" id="card-admin-validation">
+                            <div class="s-card-header">
+                                <i class='bx bxs-shield-check' style="color: #60a5fa"></i>
+                                <h3>Admin: Validation des comptes</h3>
+                            </div>
+                            <div class="s-card-body">
+                                <div id="admin-requests-list" class="admin-requests-list">
+                                    <div class="notif-placeholder">Chargement des demandes...</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- App Info -->
+                        <div class="settings-card glass">
+                            <div class="s-card-header">
+                                <i class='bx bx-info-circle'></i>
+                                <h3>À Propos</h3>
+                            </div>
+                            <div class="s-card-body">
+                                <div class="info-row">
+                                    <span>Version</span>
+                                    <span>2.1.0 (Mobile Ready)</span>
+                                </div>
+                                <div class="info-row" style="margin-top: 10px;">
+                                    <span>Éditeur</span>
+                                    <span>Nico-FSDev</span>
+                                </div>
+                                <button id="btn-support-settings" class="secondary-btn glass wide" style="margin-top: 15px;">
+                                    <i class='bx bx-bug'></i>
+                                    <span>Signaler un bug / Support</span>
+                                </button>
+                                <button id="btn-install-pwa" class="primary-btn glass hidden" style="margin-top: 15px; width: 100%;">
+                                    <i class='bx bx-download'></i>
+                                    <span>Installer l'application</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <!-- Mobile Bottom Nav (Vibrant Lifestyle Bar) -->
+            <nav class="mobile-nav">
+                <button class="mobile-nav-item active" data-view="home">
+                    <i class='bx bx-home-alt'></i>
+                    <span data-i18n="title_home">Accueil</span>
+                </button>
+                <button class="mobile-nav-item" data-view="management">
+                    <i class='bx bx-heart'></i>
+                    <span data-i18n="title_favs">Favoris</span>
+                </button>
+                <button class="mobile-nav-item" data-view="calendar">
+                    <i class='bx bx-map-alt'></i>
+                    <span data-i18n="title_discover">Découvrir</span>
+                </button>
+                <button class="mobile-nav-item" data-view="stats">
+                    <i class='bx bx-trophy'></i>
+                    <span data-i18n="title_challenges">Défis</span>
+                </button>
+                <button class="mobile-nav-item" data-view="participants">
+                    <i class='bx bx-user'></i>
+                    <span data-i18n="title_profile">Profil</span>
+                </button>
+                <button class="mobile-nav-item admin-only hidden" data-view="admin" id="mobile-nav-admin">
+                    <i class='bx bxs-shield-check'></i>
+                    <span>Admin</span>
+                </button>
+            </nav>
+        </div>
+    </div>
+
+
+    <!-- Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    
+    <div id="toast-container" class="toast-container"></div>
+    <script type="module" src="app.js"></script>
+</body>
+</html>

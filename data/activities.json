@@ -1,0 +1,3088 @@
+[
+    {
+        "title": "Méditer pendant 10 minutes",
+        "theme": "Bien-être, Sport & Développement Personnel",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 2
+    },
+    {
+        "title": "Apprendre à faire des origamis",
+        "theme": "Loisirs, Créativité & Maison",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Simplement s'asseoir en silence dans les bras l'un de l'autre",
+        "theme": "Vie de Couple & Projets Romantiques",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "couple"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Apprendre une danse (Chorégraphie, Break dance...)",
+        "theme": "Jeux, Musique & Cinéma",
+        "prix_str": "0€ - 100€",
+        "price_level": 4,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Apprendre une nouvelle recette de cuisine",
+        "theme": "Gastronomie & Sorties Gourmandes",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Grimper à Notre-Dame de la Garde (pied, bus 60 ou Petit Train)",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire une balade au bord de la mer",
+        "theme": "Nature, Sport & Excursions (Extérieur)",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Visiter Marseille en Side-Car",
+        "theme": "Insolite & Expériences Spéciales",
+        "prix_str": "60€ - 100€",
+        "price_level": 4,
+        "types": [
+            "seul",
+            "couple"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire une séance de yoga matinale",
+        "theme": "Bien-être, Sport & Développement Personnel",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Apprendre à faire des nœuds marins",
+        "theme": "Loisirs, Créativité & Maison",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Se donner mutuellement un massage du cuir chevelu",
+        "theme": "Vie de Couple & Projets Romantiques",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "couple"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Danser dans le salon avec une vidéo YouTube",
+        "theme": "Jeux, Musique & Cinéma",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Apprendre à faire du pain maison",
+        "theme": "Gastronomie & Sorties Gourmandes",
+        "prix_str": "0€ - 10€",
+        "price_level": 2,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Regarder le coucher du soleil à Notre-Dame de la Garde",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Se promener sur la Corniche Kennedy (main dans la main)",
+        "theme": "Nature, Sport & Excursions (Extérieur)",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire les boutiques vintage au Cours Julien (choisir une tenue pour l'autre)",
+        "theme": "Insolite & Expériences Spéciales",
+        "prix_str": "20€ - 80€",
+        "price_level": 4,
+        "types": [
+            "seul",
+            "couple"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire une séance de respiration profonde",
+        "theme": "Bien-être, Sport & Développement Personnel",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 2
+    },
+    {
+        "title": "Apprendre à faire des tresses complexes",
+        "theme": "Loisirs, Créativité & Maison",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "S'offrir un massage mutuel en utilisant des huiles essentielles",
+        "theme": "Vie de Couple & Projets Romantiques",
+        "prix_str": "5€",
+        "price_level": 2,
+        "types": [
+            "couple"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Organiser une soirée jeux de société",
+        "theme": "Jeux, Musique & Cinéma",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Cuisiner une pizza de A à Z",
+        "theme": "Gastronomie & Sorties Gourmandes",
+        "prix_str": "5€ - 10€",
+        "price_level": 2,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Admirer la vue depuis un point en hauteur (Bonne Mère)",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire du vélo sur la Corniche",
+        "theme": "Nature, Sport & Excursions (Extérieur)",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Chiner au Comptoir du Livre (Cours Julien)",
+        "theme": "Insolite & Expériences Spéciales",
+        "prix_str": "5€ - 30€",
+        "price_level": 3,
+        "types": [
+            "seul",
+            "couple"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire une séance de sophrologie",
+        "theme": "Bien-être, Sport & Développement Personnel",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 2
+    },
+    {
+        "title": "Apprendre à faire des bulles de savon géantes",
+        "theme": "Loisirs, Créativité & Maison",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "S'offrir une séance de réflexologie plantaire maison",
+        "theme": "Vie de Couple & Projets Romantiques",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "couple"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Jouer à un jeu de type \"escape game\" à la maison",
+        "theme": "Jeux, Musique & Cinéma",
+        "prix_str": "20€ - 30€",
+        "price_level": 3,
+        "types": [
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Cuisiner des plats à l'avance (batch cooking)",
+        "theme": "Gastronomie & Sorties Gourmandes",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Traverser le Vieux-Port à bord du mythique Ferry-Boat",
+        "theme": "Marseille",
+        "prix_str": "0,50€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Louer un tandem et longer les plages du Prado",
+        "theme": "Nature, Sport & Excursions (Extérieur)",
+        "prix_str": "15€ - 25€",
+        "price_level": 3,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Participer à une soirée quiz sur un brai plateau",
+        "theme": "Insolite & Expériences Spéciales",
+        "prix_str": "0€ - 15€",
+        "price_level": 2,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Pratiquer la marche consciente",
+        "theme": "Bien-être, Sport & Développement Personnel",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 1
+    },
+    {
+        "title": "Apprendre à jongler",
+        "theme": "Loisirs, Créativité & Maison",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Prendre un bain moussant à deux avec de la musique douce",
+        "theme": "Vie de Couple & Projets Romantiques",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "couple"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Jouer à des jeux vidéo en mode coopératif (ex: Beyond two Soul)",
+        "theme": "Jeux, Musique & Cinéma",
+        "prix_str": "0€ - 50€",
+        "price_level": 3,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Cuisiner un gâteau pour ses voisins",
+        "theme": "Gastronomie & Sorties Gourmandes",
+        "prix_str": "5€ - 15€",
+        "price_level": 2,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Flâner sur le Quai du Port (Rive Nord)",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire du roller ou de la trottinette sur le littoral",
+        "theme": "Nature, Sport & Excursions (Extérieur)",
+        "prix_str": "10€ - 20€",
+        "price_level": 2,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Participer à un atelier pour créer son propre parfum",
+        "theme": "Insolite & Expériences Spéciales",
+        "prix_str": "60€ - 90€",
+        "price_level": 4,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire une séance de gym faciale",
+        "theme": "Bien-être, Sport & Développement Personnel",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Apprendre à siffler très fort",
+        "theme": "Loisirs, Créativité & Maison",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Échanger de rôles pour une demi-journée (imitation)",
+        "theme": "Vie de Couple & Projets Romantiques",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "couple"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Jouer à un jeu vidéo rétro",
+        "theme": "Jeux, Musique & Cinéma",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Se lancer un défi cuisine type \"Top Chef\" (restes du frigo)",
+        "theme": "Gastronomie & Sorties Gourmandes",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Se promener sur la Rive Sud (Cours d'Estienne d'Orves)",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire du jogging au parc Borély",
+        "theme": "Nature, Sport & Excursions (Extérieur)",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Tester un simulateur de chute libre ou VR",
+        "theme": "Insolite & Expériences Spéciales",
+        "prix_str": "50€ - 80€",
+        "price_level": 4,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire une séance d'auto-massage",
+        "theme": "Bien-être, Sport & Développement Personnel",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul"
+        ],
+        "rating": 2
+    },
+    {
+        "title": "Apprendre des tours de magie simples",
+        "theme": "Loisirs, Créativité & Maison",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "S'écrire une lettre d'amour à lire dans exactement un an",
+        "theme": "Vie de Couple & Projets Romantiques",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "couple"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Jouer au \"Action ou Vérité\" (questions profondes ou drôles)",
+        "theme": "Jeux, Musique & Cinéma",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Cuisiner un plat les yeux bandés (guidage vocal)",
+        "theme": "Gastronomie & Sorties Gourmandes",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Admirer l'Hôtel de Ville (XVIIe siècle)",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire du pédalo au parc Borély",
+        "theme": "Nature, Sport & Excursions (Extérieur)",
+        "prix_str": "10€ - 15€",
+        "price_level": 2,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Aller au Palais Omnisports (patin à glace)",
+        "theme": "Insolite & Expériences Spéciales",
+        "prix_str": "5€ - 10€",
+        "price_level": 2,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire une séance de sport à la maison",
+        "theme": "Bien-être, Sport & Développement Personnel",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Apprendre à jouer d'un instrument (ou s'entraîner)",
+        "theme": "Loisirs, Créativité & Maison",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Écrire une lettre à son \"futur soi\"",
+        "theme": "Vie de Couple & Projets Romantiques",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "couple"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Jouer aux fléchettes ou au billard dans un bar",
+        "theme": "Jeux, Musique & Cinéma",
+        "prix_str": "10€ - 15€",
+        "price_level": 2,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire un dîner \"tout à l'envers\"",
+        "theme": "Gastronomie & Sorties Gourmandes",
+        "prix_str": "10€ - 30€",
+        "price_level": 3,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Observer le bâtiment de la Consigne Sanitaire",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Flâner au Palais Longchamp (jardins et café)",
+        "theme": "Nature, Sport & Excursions (Extérieur)",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Louer une Mustang pour un road-trip",
+        "theme": "Insolite & Expériences Spéciales",
+        "prix_str": "150€ - 300€",
+        "price_level": 4,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire une séance de HIIT (High Intensity Interval Training)",
+        "theme": "Bien-être, Sport & Développement Personnel",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Apprendre les bases de l'astronomie",
+        "theme": "Loisirs, Créativité & Maison",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Créer un album photo imprimé de vos meilleurs souvenirs à deux",
+        "theme": "Vie de Couple & Projets Romantiques",
+        "prix_str": "15€ - 40€",
+        "price_level": 3,
+        "types": [
+            "couple"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire une séance de karaoké improvisée",
+        "theme": "Jeux, Musique & Cinéma",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Préparer un dîner créatif et élaboré maison",
+        "theme": "Gastronomie & Sorties Gourmandes",
+        "prix_str": "25€ - 35€",
+        "price_level": 3,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Se détendre Place Villeneuve-Bargemon",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire un pique-nique au parc Longchamp",
+        "theme": "Nature, Sport & Excursions (Extérieur)",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Caleche",
+        "theme": "Insolite & Expériences Spéciales",
+        "prix_str": "30€ - 50€",
+        "price_level": 3,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire une séance de \"shadow boxing\"",
+        "theme": "Bien-être, Sport & Développement Personnel",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Apprendre à coder les bases du HTML",
+        "theme": "Loisirs, Créativité & Maison",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Créer une boîte à souvenirs",
+        "theme": "Vie de Couple & Projets Romantiques",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "couple"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Organiser un karaoké endiablé en duo dans le salon",
+        "theme": "Jeux, Musique & Cinéma",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Préparer et savourer un petit-déjeuner spécial au lit",
+        "theme": "Gastronomie & Sorties Gourmandes",
+        "prix_str": "10€ - 20€",
+        "price_level": 2,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Trouver la Maison Diamantée",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Regarder les étoiles (balcon ou extérieur) avec une application",
+        "theme": "Nature, Sport & Excursions (Extérieur)",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Circuit Paul Ricard",
+        "theme": "Insolite & Expériences Spéciales",
+        "prix_str": "40€ - 150€",
+        "price_level": 4,
+        "types": [
+            "seul",
+            "couple"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire des étirements avant de dormir",
+        "theme": "Bien-être, Sport & Développement Personnel",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 4
+    },
+    {
+        "title": "Apprendre 5 nouveaux mots dans une langue étrangère",
+        "theme": "Loisirs, Créativité & Maison",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Créer une \"bucket list\" de couple",
+        "theme": "Vie de Couple & Projets Romantiques",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "couple"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Box karaoké",
+        "theme": "Jeux, Musique & Cinéma",
+        "prix_str": "20€ - 40€",
+        "price_level": 3,
+        "types": [
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Organiser un brunch monumental à la maison",
+        "theme": "Gastronomie & Sorties Gourmandes",
+        "prix_str": "10€ - 20€",
+        "price_level": 2,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Passer devant le Pavillon Daviel",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire du geocaching dans la ville ou aux Calanques de Luminy",
+        "theme": "Nature, Sport & Excursions (Extérieur)",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Stand de tir",
+        "theme": "Insolite & Expériences Spéciales",
+        "prix_str": "30€ - 60€",
+        "price_level": 3,
+        "types": [
+            "seul",
+            "couple"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire une sieste réparatrice",
+        "theme": "Bien-être, Sport & Développement Personnel",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 4
+    },
+    {
+        "title": "Apprendre la langue des signes (quelques bases)",
+        "theme": "Loisirs, Créativité & Maison",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Acheter une carte du monde et marquer les endroits à visiter",
+        "theme": "Vie de Couple & Projets Romantiques",
+        "prix_str": "10€ - 20€",
+        "price_level": 2,
+        "types": [
+            "couple"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire une liste de films à voir absolument",
+        "theme": "Jeux, Musique & Cinéma",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Créer son propre cocktail sans alcool Signature (Nours & Noursette)",
+        "theme": "Gastronomie & Sorties Gourmandes",
+        "prix_str": "10€ - 30€",
+        "price_level": 3,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Contempler la façade de l'Hôtel-Dieu",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire un tour de pétanque (très marseillais !)",
+        "theme": "Nature, Sport & Excursions (Extérieur)",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Sportbeach",
+        "theme": "Insolite & Expériences Spéciales",
+        "prix_str": "50€ - 100€",
+        "price_level": 4,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire un bain de pieds relaxant",
+        "theme": "Bien-être, Sport & Développement Personnel",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 5
+    },
+    {
+        "title": "Lire un chapitre d'un livre",
+        "theme": "Loisirs, Créativité & Maison",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Planifier en détail vos prochaines vacances de rêve",
+        "theme": "Vie de Couple & Projets Romantiques",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "couple"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Regarder un vieux film classique",
+        "theme": "Jeux, Musique & Cinéma",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Créer de nouveaux cocktails maison (Sans alcool)",
+        "theme": "Gastronomie & Sorties Gourmandes",
+        "prix_str": "10€ - 30€",
+        "price_level": 3,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Observer le clocher de l'église des Accoules",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Aller courir au parc Borély",
+        "theme": "Nature, Sport & Excursions (Extérieur)",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Hôtel de luxe palmier bord de mer",
+        "theme": "Insolite & Expériences Spéciales",
+        "prix_str": "200€ - 500€",
+        "price_level": 4,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire une cure de thé ou d'infusions",
+        "theme": "Bien-être, Sport & Développement Personnel",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire une séance de lecture à voix haute",
+        "theme": "Loisirs, Créativité & Maison",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Organiser une chasse au trésor romantique dans l'appartement",
+        "theme": "Vie de Couple & Projets Romantiques",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "couple"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Écouter un album vinyle en entier sans rien faire d'autre",
+        "theme": "Jeux, Musique & Cinéma",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire une dégustation de jus à l'aveugle à la maison",
+        "theme": "Gastronomie & Sorties Gourmandes",
+        "prix_str": "5€ - 15€",
+        "price_level": 2,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire une pause sur la Place de Lenche",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire une promenade nocturne (quartier sûr)",
+        "theme": "Nature, Sport & Excursions (Extérieur)",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "S'offrir une demi-journée de spa et thalassothérapie",
+        "theme": "Insolite & Expériences Spéciales",
+        "prix_str": "80€ - 150€",
+        "price_level": 4,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire un défi \"30 jours sans sucre ajouté\"",
+        "theme": "Bien-être, Sport & Développement Personnel",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 2
+    },
+    {
+        "title": "Écrire un poème ou une courte histoire",
+        "theme": "Loisirs, Créativité & Maison",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire un jeu de piste improvisé pour des amis",
+        "theme": "Vie de Couple & Projets Romantiques",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "couple"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Écouter une histoire effrayante (audio) dans le noir absolu",
+        "theme": "Jeux, Musique & Cinéma",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Suivre un cours de cuisine ou de pâtisserie",
+        "theme": "Gastronomie & Sorties Gourmandes",
+        "prix_str": "50€ - 100€",
+        "price_level": 4,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Visiter l'église Saint-Laurent et la Chapelle Sainte-Catherine",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire une randonnée nocturne (lampes frontales)",
+        "theme": "Nature, Sport & Excursions (Extérieur)",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "S'initier à la poterie à l'aveugle",
+        "theme": "Insolite & Expériences Spéciales",
+        "prix_str": "40€ - 60€",
+        "price_level": 3,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Écrire dans un journal de gratitude",
+        "theme": "Bien-être, Sport & Développement Personnel",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Écrire une lettre à un ami ou un proche",
+        "theme": "Loisirs, Créativité & Maison",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Camper dans le salon (couvertures, coussins, guirlandes)",
+        "theme": "Vie de Couple & Projets Romantiques",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "couple"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Organiser une soirée cinéma thématique + pop-corn",
+        "theme": "Jeux, Musique & Cinéma",
+        "prix_str": "2€ - 5€",
+        "price_level": 2,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Participer à un atelier Mocktail",
+        "theme": "Gastronomie & Sorties Gourmandes",
+        "prix_str": "50€ - 100€",
+        "price_level": 4,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Voir l'Arsenal des Galères",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire une grande randonnée dans le Parc national des Calanques",
+        "theme": "Nature, Sport & Excursions (Extérieur)",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Se donner un budget de 5€ au marché pour un cadeau surprise",
+        "theme": "Insolite & Expériences Spéciales",
+        "prix_str": "5€",
+        "price_level": 2,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Écrire ses rêves au réveil",
+        "theme": "Bien-être, Sport & Développement Personnel",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 2
+    },
+    {
+        "title": "Dessiner ou peindre un paysage",
+        "theme": "Loisirs, Créativité & Maison",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Jouer à cache-cache dans le noir dans l'appartement",
+        "theme": "Vie de Couple & Projets Romantiques",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "couple"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Soirée cinéma thématique dans manger pendant",
+        "theme": "Jeux, Musique & Cinéma",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "S'initier à la fabrication de plats étrangers",
+        "theme": "Gastronomie & Sorties Gourmandes",
+        "prix_str": "50€ - 100€",
+        "price_level": 4,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Passer devant La Criée (Théâtre National)",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire de l'escalade escalade de bloc en salle",
+        "theme": "Nature, Sport & Excursions (Extérieur)",
+        "prix_str": "15€ - 25€",
+        "price_level": 3,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "S'essayer à l'aquarelle en extérieur (Vallon des Auffes)",
+        "theme": "Insolite & Expériences Spéciales",
+        "prix_str": "10€ - 20€",
+        "price_level": 2,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire un inventaire de ses objectifs de vie",
+        "theme": "Bien-être, Sport & Développement Personnel",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 4
+    },
+    {
+        "title": "Faire une séance de calligraphie",
+        "theme": "Loisirs, Créativité & Maison",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire une bataille d'oreillers ou de pistolets à eau",
+        "theme": "Vie de Couple & Projets Romantiques",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "couple"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Suivre un cours de cuisine ou de pâtisserie en couple",
+        "theme": "Jeux, Musique & Cinéma",
+        "prix_str": "50€ - 100€",
+        "price_level": 4,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Manger une glace artisanale sur le Vieux-Port",
+        "theme": "Gastronomie & Sorties Gourmandes",
+        "prix_str": "5€ - 15€",
+        "price_level": 2,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Visiter le Mucem",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire de l'escalade dans les Calanques",
+        "theme": "Nature, Sport & Excursions (Extérieur)",
+        "prix_str": "40€ - 60€",
+        "price_level": 3,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "S'entraîner à la prise de parole en public devant un miroir",
+        "theme": "Bien-être, Sport & Développement Personnel",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire du scrapbooking",
+        "theme": "Loisirs, Créativité & Maison",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire un \"room tour\" critique et exagéré de sa maison",
+        "theme": "Vie de Couple & Projets Romantiques",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "couple"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Déguster des coquillages et des fruits de mer frais en terrasse",
+        "theme": "Gastronomie & Sorties Gourmandes",
+        "prix_str": "25€ - 60€",
+        "price_level": 3,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Flâner dans les jardins suspendus du Fort Saint-Jean",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "S'aventurer sur une Via Ferrata face à la mer",
+        "theme": "Nature, Sport & Excursions (Extérieur)",
+        "prix_str": "45€ - 70€",
+        "price_level": 4,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Simplement s'asseoir et observer les passants",
+        "theme": "Bien-être, Sport & Développement Personnel",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 1
+    },
+    {
+        "title": "Faire un collage avec des magazines",
+        "theme": "Loisirs, Créativité & Maison",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Lire vos thèmes astraux ou tests de compatibilité décalés",
+        "theme": "Vie de Couple & Projets Romantiques",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "couple"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Se lever tôt pour aller chercher des viennoiseries fraîches",
+        "theme": "Gastronomie & Sorties Gourmandes",
+        "prix_str": "5€ - 10€",
+        "price_level": 2,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Se promener sur l'Esplanade du J4",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Participer à une session bénévole de nettoyage de plage",
+        "theme": "Nature, Sport & Excursions (Extérieur)",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire un herbier avec des feuilles trouvées dehors",
+        "theme": "Loisirs, Créativité & Maison",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Regarder des vidéos drôles ou des \"fails\" jusqu'à rire",
+        "theme": "Vie de Couple & Projets Romantiques",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "couple"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Acheter et déguster la spécialité locale au Four des Navettes",
+        "theme": "Gastronomie & Sorties Gourmandes",
+        "prix_str": "2€ - 5€",
+        "price_level": 2,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Visiter Cosquer Méditerranée (réplique de la grotte)",
+        "theme": "Marseille",
+        "prix_str": "16€ - 18€",
+        "price_level": 2,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire du snorkeling dans les eaux claires de la Côte Bleue",
+        "theme": "Nature, Sport & Excursions (Extérieur)",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire une séance de coloriage pour adultes (mandala)",
+        "theme": "Loisirs, Créativité & Maison",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "S'apprendre mutuellement une compétence",
+        "theme": "Vie de Couple & Projets Romantiques",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "couple"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Visiter l'Abbaye Saint-Victor et manger une navette",
+        "theme": "Gastronomie & Sorties Gourmandes",
+        "prix_str": "2€ - 5€",
+        "price_level": 2,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Visiter le Musée Regards de Provence",
+        "theme": "Marseille",
+        "prix_str": "6€ - 12€",
+        "price_level": 2,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Observer les oiseaux (apprendre leurs chants)",
+        "theme": "Nature, Sport & Excursions (Extérieur)",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Décorer ses propres tasses ou verres",
+        "theme": "Loisirs, Créativité & Maison",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Peindre une toile ensemble (à quatre mains)",
+        "theme": "Vie de Couple & Projets Romantiques",
+        "prix_str": "15€ - 100€",
+        "price_level": 4,
+        "types": [
+            "couple"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Se faire une soirée raclette ou fondue (même hors saison)",
+        "theme": "Gastronomie & Sorties Gourmandes",
+        "prix_str": "20€ - 40€",
+        "price_level": 3,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire du lèche-vitrine sous les Voûtes de la Major",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire un tour de canoë ou de paddle",
+        "theme": "Nature, Sport & Excursions (Extérieur)",
+        "prix_str": "15€ - 30€",
+        "price_level": 3,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire ses propres cosmétiques naturels",
+        "theme": "Loisirs, Créativité & Maison",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Dessiner le portrait de l'autre sans lever le stylo",
+        "theme": "Vie de Couple & Projets Romantiques",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "couple"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Brunch : Le bonbon (Marseille)",
+        "theme": "Gastronomie & Sorties Gourmandes",
+        "prix_str": "25€ - 35€",
+        "price_level": 3,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Admirer la Cathédrale de la Major (Nouvelle et Vieille)",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Sortie en kayak en mer",
+        "theme": "Nature, Sport & Excursions (Extérieur)",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire un \"vision board\" pour ses projets",
+        "theme": "Loisirs, Créativité & Maison",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Apprendre une langue étrangère ensemble (duels sur application)",
+        "theme": "Vie de Couple & Projets Romantiques",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "couple"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Restaurants : Busan (La Valentine), Italien aux chandelles",
+        "theme": "Gastronomie & Sorties Gourmandes",
+        "prix_str": "20€ - 40€",
+        "price_level": 3,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Se perdre dans les ruelles du Panier",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire du paddle au coucher du soleil (autour du Frioul)",
+        "theme": "Nature, Sport & Excursions (Extérieur)",
+        "prix_str": "15€ - 30€",
+        "price_level": 3,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Créer son arbre généalogique",
+        "theme": "Loisirs, Créativité & Maison",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Apprendre un tour de magie complexe en duo",
+        "theme": "Vie de Couple & Projets Romantiques",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "couple"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Restaurants : Les Bords de mer (Marseille), Le Kouros (Cuers)",
+        "theme": "Gastronomie & Sorties Gourmandes",
+        "prix_str": "60€ - 150€",
+        "price_level": 4,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Découvrir la Vieille Charité",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Prendre le bateau pour l'archipel du Frioul",
+        "theme": "Nature, Sport & Excursions (Extérieur)",
+        "prix_str": "11€",
+        "price_level": 2,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire un puzzle",
+        "theme": "Loisirs, Créativité & Maison",
+        "prix_str": "10€ - 30€",
+        "price_level": 3,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Créer une playlist partagée sur Deezer/Spotify pour la voiture",
+        "theme": "Vie de Couple & Projets Romantiques",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "couple"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Expériences : Restaurant 3 étoiles",
+        "theme": "Gastronomie & Sorties Gourmandes",
+        "prix_str": "250€ - 400€",
+        "price_level": 4,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "S'asseoir Place des Moulins",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Se baigner dans les criques du Frioul",
+        "theme": "Nature, Sport & Excursions (Extérieur)",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire du tricot ou du crochet",
+        "theme": "Loisirs, Créativité & Maison",
+        "prix_str": "5€ -10€",
+        "price_level": 2,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Se faire une séance photo improvisée (ruelles du Panier)",
+        "theme": "Vie de Couple & Projets Romantiques",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "couple"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Expériences : Salon de thé / Café",
+        "theme": "Gastronomie & Sorties Gourmandes",
+        "prix_str": "5€ - 20€",
+        "price_level": 2,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Trouver l'Hôtel de Cabre",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Visiter le Château d'If",
+        "theme": "Nature, Sport & Excursions (Extérieur)",
+        "prix_str": "15€",
+        "price_level": 2,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire du jardinage ou s'occuper de plantes d'intérieur",
+        "theme": "Loisirs, Créativité & Maison",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire un \"blind test\" musical personnalisé",
+        "theme": "Vie de Couple & Projets Romantiques",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "couple"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Dîner élaboré maison",
+        "theme": "Gastronomie & Sorties Gourmandes",
+        "prix_str": "20€ - 50€",
+        "price_level": 3,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Remonter le temps au Musée d'Histoire de Marseille",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Embarquer à bord d'un Vieux Gréement ou d'un catamaran",
+        "theme": "Nature, Sport & Excursions (Extérieur)",
+        "prix_str": "40€ - 100€",
+        "price_level": 4,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Créer un terrarium fermé avec des plantes",
+        "theme": "Loisirs, Créativité & Maison",
+        "prix_str": "10€ - 40€",
+        "price_level": 3,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire une séance de méditation guidée pour se reconnecter",
+        "theme": "Vie de Couple & Projets Romantiques",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "couple"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Se promener dans les vestiges du Port Antique (Centre Bourse)",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire une balade en \"pointu\" (bateau traditionnel)",
+        "theme": "Nature, Sport & Excursions (Extérieur)",
+        "prix_str": "30€ - 60€",
+        "price_level": 3,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Réparer un objet cassé au lieu de le jeter",
+        "theme": "Loisirs, Créativité & Maison",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Renouvellement des voeux de mariage",
+        "theme": "Vie de Couple & Projets Romantiques",
+        "prix_str": "Gratuit - 5000€",
+        "price_level": 4,
+        "types": [
+            "couple"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Visiter le MAC (Musée d'Art Contemporain)",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Voilier",
+        "theme": "Nature, Sport & Excursions (Extérieur)",
+        "prix_str": "150€ - 300€",
+        "price_level": 4,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Apprendre à réparer un pneu de vélo",
+        "theme": "Loisirs, Créativité & Maison",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Bague noursette 49 ou 50",
+        "theme": "Vie de Couple & Projets Romantiques",
+        "prix_str": "50€ - 5000€",
+        "price_level": 4,
+        "types": [
+            "couple"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire du shopping aux Terrasses du Port (rooftop)",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire un concours de ricochets sur la plage de la Pointe Rouge",
+        "theme": "Nature, Sport & Excursions (Extérieur)",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Réorganiser les meubles d'une pièce",
+        "theme": "Loisirs, Créativité & Maison",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Shooting photos couple",
+        "theme": "Vie de Couple & Projets Romantiques",
+        "prix_str": "150€ - 400€",
+        "price_level": 4,
+        "types": [
+            "couple"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Se balader aux Docks Village",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Se lever à l'aube pour regarder le lever du soleil (thermos de café)",
+        "theme": "Nature, Sport & Excursions (Extérieur)",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Trier et ranger ses vêtements",
+        "theme": "Loisirs, Créativité & Maison",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Soirée aux chandelles à Vaux-le-Vicomte",
+        "theme": "Vie de Couple & Projets Romantiques",
+        "prix_str": "100€ - 300€",
+        "price_level": 4,
+        "types": [
+            "couple"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Découvrir le concept-store Mx Marseille",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire une balade à cheval (Camargue, bord de mer ou terres)",
+        "theme": "Nature, Sport & Excursions (Extérieur)",
+        "prix_str": "40€ - 80€",
+        "price_level": 4,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire une séance de \"decluttering\" (désencombrement)",
+        "theme": "Loisirs, Créativité & Maison",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Se choisir des tenues Assorties",
+        "theme": "Vie de Couple & Projets Romantiques",
+        "prix_str": "0€ - 200€",
+        "price_level": 4,
+        "types": [
+            "couple"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Voir le Silo (salle de spectacle)",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Pêche dans un lac",
+        "theme": "Nature, Sport & Excursions (Extérieur)",
+        "prix_str": "10€ - 20€",
+        "price_level": 2,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Nettoyer son espace numérique (mails, fichiers)",
+        "theme": "Loisirs, Créativité & Maison",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Acheter des tenues de mariage : Robe Cocktail et Smoking",
+        "theme": "Vie de Couple & Projets Romantiques",
+        "prix_str": "1000€ - 3000€",
+        "price_level": 4,
+        "types": [
+            "couple"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Admirer la Tour CMA-CGM et La Marseillaise",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Explorer la Vallée de St Pons",
+        "theme": "Nature, Sport & Excursions (Extérieur)",
+        "prix_str": "0€ - 20€",
+        "price_level": 2,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Essayer le \"digital detox\" pendant une soirée",
+        "theme": "Loisirs, Créativité & Maison",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Cadeau Chirurgie Esthétique",
+        "theme": "Vie de Couple & Projets Romantiques",
+        "prix_str": "100€ - 7000€",
+        "price_level": 4,
+        "types": [
+            "couple"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Aller au cinéma Europacorp de la Joliette",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Pédalo dans les Gorges du Verdon",
+        "theme": "Nature, Sport & Excursions (Extérieur)",
+        "prix_str": "15€ - 25€",
+        "price_level": 3,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Écouter un nouveau podcast",
+        "theme": "Loisirs, Créativité & Maison",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Apprendre une danse de couple (Salsa, Tango...)",
+        "theme": "Vie de Couple & Projets Romantiques",
+        "prix_str": "0€ - 100€",
+        "price_level": 4,
+        "types": [
+            "couple"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Assister à une représentation au Théâtre de la Joliette",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Camping",
+        "theme": "Nature, Sport & Excursions (Extérieur)",
+        "prix_str": "20€ - 50€",
+        "price_level": 3,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Créer une playlist pour chaque humeur",
+        "theme": "Loisirs, Créativité & Maison",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Soirée aux chandelles à Vaux-le-Vicomte",
+        "theme": "Vie de Couple & Projets Romantiques",
+        "prix_str": "22 € - 120€",
+        "price_level": 4,
+        "types": [
+            "couple"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Découvrir le Frac Sud",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Excursions : Cassis, Aix-en-Provence, Arles, Camargue, Luberon, Nice, Route des Crêtes (Cassis/La Ciotat), Champs de lavande",
+        "theme": "Nature, Sport & Excursions (Extérieur)",
+        "prix_str": "30€ - 50€",
+        "price_level": 3,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Découvrir de nouveaux artistes sur une plateforme de streaming",
+        "theme": "Loisirs, Créativité & Maison",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Explorer la Friche la Belle de Mai (expos, skatepark, toit-terrasse)",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Visiter la Carrière des Lumières",
+        "theme": "Nature, Sport & Excursions (Extérieur)",
+        "prix_str": "0€ - 15€",
+        "price_level": 2,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Regarder un documentaire sur un sujet inconnu",
+        "theme": "Loisirs, Créativité & Maison",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Emprunter la rue de la République",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Safari / Zoo de Beauval",
+        "theme": "Nature, Sport & Excursions (Extérieur)",
+        "prix_str": "30€ - 40€",
+        "price_level": 3,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire un \"test de personnalité\" en ligne pour s'amuser",
+        "theme": "Loisirs, Créativité & Maison",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Visiter la Cité Radieuse (Le Corbusier)",
+        "theme": "Marseille",
+        "prix_str": "0€ - 18€",
+        "price_level": 2,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Suivre un tutoriel de maquillage ou de coiffure",
+        "theme": "Loisirs, Créativité & Maison",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Suivre une visite guidée du quartier Vauban ou Belsunce",
+        "theme": "Marseille",
+        "prix_str": "12€ - 18€",
+        "price_level": 2,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Prendre des photos de son quartier",
+        "theme": "Loisirs, Créativité & Maison",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Aller voir une exposition de street-art au Panier",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire une séance de photo macro avec son téléphone",
+        "theme": "Loisirs, Créativité & Maison",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Aller voir un spectacle au Quai du Rire",
+        "theme": "Marseille",
+        "prix_str": "15€ - 30€",
+        "price_level": 3,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Construire un lego / maquette",
+        "theme": "Loisirs, Créativité & Maison",
+        "prix_str": "0€ - 300€",
+        "price_level": 4,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Aller voir un match au stade Vélodrome",
+        "theme": "Marseille",
+        "prix_str": "30€ - 100€",
+        "price_level": 4,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Découvrir l'artisanat aux Santons Marcel Carbonel",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Aller à la bibliothèque municipale",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Visiter un musée gratuit",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Aller à un concert dans un bar musical marseillais",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Aller voir un film au cinéma indépendant (La Baleine, Les Variétés)",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Faire un tour au Vallon des Auffes pour l'ambiance",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Manger une glace sur le Vieux-Port le soir",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Apprendre des expressions marseillaises typiques",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    },
+    {
+        "title": "Aller dans les Galeries D'art du quartier",
+        "theme": "Marseille",
+        "prix_str": "0€",
+        "price_level": 1,
+        "types": [
+            "seul",
+            "couple",
+            "famille"
+        ],
+        "rating": 3
+    }
+]
