@@ -77,21 +77,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function toggleMusic() {
         initMusic();
-        const btn = document.getElementById('btn-toggle-music');
-        const icon = btn.querySelector('i');
+        const btnMobile = document.getElementById('btn-toggle-music');
+        const btnDesktop = document.getElementById('btn-toggle-music-desktop');
+        const iconMobile = btnMobile ? btnMobile.querySelector('i') : null;
+        const iconDesktop = btnDesktop ? btnDesktop.querySelector('i') : null;
 
         if (isMusicPlaying) {
             bgMusic.pause();
-            icon.className = 'bx bx-volume-mute';
+            if (iconMobile) iconMobile.className = 'bx bx-volume-mute';
+            if (iconDesktop) iconDesktop.className = 'bx bx-volume-mute';
             isMusicPlaying = false;
         } else {
             bgMusic.play().catch(e => console.log("Music blocked", e));
-            icon.className = 'bx bx-volume-full';
+            if (iconMobile) iconMobile.className = 'bx bx-volume-full';
+            if (iconDesktop) iconDesktop.className = 'bx bx-volume-full';
             isMusicPlaying = true;
         }
     }
     
-    document.getElementById('btn-toggle-music').onclick = toggleMusic;
+    const mBtn = document.getElementById('btn-toggle-music');
+    if (mBtn) mBtn.onclick = toggleMusic;
+    const dBtn = document.getElementById('btn-toggle-music-desktop');
+    if (dBtn) dBtn.onclick = toggleMusic;
 
     // --- State & Elements ---
     let currentUser = null;
