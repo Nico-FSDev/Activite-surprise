@@ -69,8 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function initMusic() {
         if (!bgMusic) {
-            // Musique Jazzy / Lofi au coin du feu
-            bgMusic = new Audio('https://cdn.pixabay.com/audio/2022/08/02/audio_884b9bc146.mp3');
+            // Musique Chill Lofi hébergée de manière permanente sur GitHub
+            bgMusic = new Audio('https://raw.githubusercontent.com/the-maldonado-group/lofi-player/main/music/track1.mp3');
             bgMusic.loop = true;
             bgMusic.volume = 0.5;
             
