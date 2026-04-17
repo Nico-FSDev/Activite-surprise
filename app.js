@@ -63,6 +63,36 @@ document.addEventListener('DOMContentLoaded', () => {
         if (btnInstall) btnInstall.classList.add('hidden');
     });
 
+    // --- Audio Logic ---
+    let bgMusic = null;
+    let isMusicPlaying = false;
+
+    function initMusic() {
+        if (!bgMusic) {
+            bgMusic = new Audio('https://cdn.pixabay.com/audio/2022/03/10/audio_51574d754b.mp3');
+            bgMusic.loop = true;
+            bgMusic.volume = 0.25; // Volume relax
+        }
+    }
+
+    function toggleMusic() {
+        initMusic();
+        const btn = document.getElementById('btn-toggle-music');
+        const icon = btn.querySelector('i');
+
+        if (isMusicPlaying) {
+            bgMusic.pause();
+            icon.className = 'bx bx-volume-mute';
+            isMusicPlaying = false;
+        } else {
+            bgMusic.play().catch(e => console.log("Music blocked", e));
+            icon.className = 'bx bx-volume-full';
+            isMusicPlaying = true;
+        }
+    }
+    
+    document.getElementById('btn-toggle-music').onclick = toggleMusic;
+
     // --- State & Elements ---
     let currentUser = null;
     let activities = [];
