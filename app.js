@@ -1570,16 +1570,26 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             if (response === 'accepted') {
-                // 2. Find the original participant doc and update its status
+                // 2. Update the sender's participant document
                 await updateDoc(doc(db, "participants", notif.participantId), { 
                     status: 'linked',
                     linkedUid: currentUser.uid 
                 });
                 
-                // 3. RECIPROCAL NOTIFICATION: Notify the sender of success
-                // We use the fromEmail directly from the notification to avoid permission issues
-                const senderEmail = notif.fromEmail;
+                // 3. RECIPROCITY: Create a participant entry for the receiver too!
+                // So both people see each other in their lists automatically.
+                await addDoc(collection(db, "participants"), {
+                    name: notif.fromName || "Membre Famille",
+                    email: notif.fromEmail || null,
+                    relation: notif.relation || "Membre", // We use the same relation as a base
+                    userId: currentUser.uid,
+                    status: 'linked',
+                    linkedUid: notif.fromUid,
+                    joinedAt: Date.now()
+                });
 
+                // 4. Notify the sender of success
+                const senderEmail = notif.fromEmail;
                 if (senderEmail) {
                     await addDoc(collection(db, "notifications"), {
                         type: 'link_accepted',
@@ -1591,10 +1601,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                 }
                 
-                showToast("Lien familial accepté !", 'success');
+                showToast("Lien familial accepté et créé dans les deux listes !", 'success');
             }
         } catch (e) {
-            console.error(e);
+            console.error("Error responding to request:", e);
             showToast("Erreur lors de la réponse.", 'error');
         }
     }
