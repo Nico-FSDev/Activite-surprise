@@ -69,13 +69,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function initMusic() {
         if (!bgMusic) {
-            // Musique Chill Lofi hébergée de manière permanente sur GitHub
-            bgMusic = new Audio('https://raw.githubusercontent.com/the-maldonado-group/lofi-player/main/music/track1.mp3');
+            // Utilisation du fichier local pour garantir la disponibilité
+            bgMusic = new Audio('audio/background-chill.mp3');
             bgMusic.loop = true;
             bgMusic.volume = 0.5;
             
             bgMusic.onerror = () => {
-                console.error("Erreur de chargement audio");
+                console.error("Erreur de chargement audio local");
             };
         }
     }
