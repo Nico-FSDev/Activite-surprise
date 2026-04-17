@@ -246,6 +246,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnResendV = document.getElementById('btn-resend-v');
     const btnBackLogin = document.getElementById('btn-back-login');
     const btnRequestAdminV = document.getElementById('btn-request-admin-v');
+    
+    // UI Elements for Spin Preparation
+    const modalSpinPrep = document.getElementById('modal-spin-prep');
+    const spinPSelection = document.getElementById('spin-participants-selection');
+    const spinPListCheck = document.getElementById('spin-p-list-check');
+    const btnConfirmSpin = document.getElementById('btn-confirm-spin');
+    const btnCancelSpin = document.getElementById('btn-cancel-spin');
+    const prepTypeBtns = document.querySelectorAll('.prep-type-btn');
+    
+    let selectedSpinType = 'seul';
 
     let authMode = 'login'; // 'login' or 'signup'
 
@@ -1285,16 +1295,97 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        const handleSurpriseSpin = async (triggerBtn) => {
-            // Only pull from filtered available items!
+        const handleSurpriseSpin = (triggerBtn) => {
+            // Check if we have enough activities first
             const basePool = activities.filter(a => a.status === 'available');
             const pool = getFilteredActivities(basePool, homeFilters);
             if (pool.length < 2) return showToast("Ajoutez au moins 2 activités pour faire tourner la roue !", 'error');
 
+            // Open preparation modal instead of spinning
+            if (modalSpinPrep) {
+                modalSpinPrep.classList.remove('hidden');
+                renderSpinParticipantSelection();
+            }
+        };
+
+        function renderSpinParticipantSelection() {
+            if (!spinPListCheck) return;
+            spinPListCheck.innerHTML = '';
+            
+            if (participants.length === 0) {
+                spinPListCheck.innerHTML = '<p style="font-size:0.8rem; opacity:0.6;">Aucun membre créé dans Profil.</p>';
+            }
+
+            participants.forEach(p => {
+                const item = document.createElement('label');
+                item.style.display = 'flex';
+                item.style.alignItems = 'center';
+                item.style.gap = '10px';
+                item.style.cursor = 'pointer';
+                item.style.padding = '5px';
+                item.style.background = 'rgba(255,255,255,0.05)';
+                item.style.borderRadius = '8px';
+
+                item.innerHTML = `
+                    <input type="checkbox" class="spin-member-chk" value="${p.id}" data-name="${p.name}">
+                    <span style="font-size:0.9rem;">${p.name} <small style="opacity:0.6">(${p.relation || 'Membre'})</small></span>
+                `;
+                spinPListCheck.appendChild(item);
+            });
+        }
+
+        // Prep Modal Listeners
+        if (prepTypeBtns) {
+            prepTypeBtns.forEach(btn => {
+                btn.onclick = () => {
+                    prepTypeBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    selectedSpinType = btn.dataset.type;
+                    
+                    if (selectedSpinType === 'seul') {
+                        spinPSelection.classList.add('hidden');
+                    } else {
+                        spinPSelection.classList.remove('hidden');
+                    }
+                    playSound('click');
+                };
+            });
+        }
+
+        if (btnCancelSpin) {
+            btnCancelSpin.onclick = () => {
+                modalSpinPrep.classList.add('hidden');
+            };
+        }
+
+        if (btnConfirmSpin) {
+            btnConfirmSpin.onclick = () => {
+                const selectedMembers = [];
+                if (selectedSpinType !== 'seul') {
+                    document.querySelectorAll('.spin-member-chk:checked').forEach(chk => {
+                        selectedMembers.push(chk.dataset.name);
+                    });
+                    
+                    if (selectedSpinType === 'couple' && selectedMembers.length < 1) {
+                        return showToast("Veuillez sélectionner au moins 1 partenaire.", 'info');
+                    }
+                    if (selectedSpinType === 'famille' && selectedMembers.length < 1) {
+                        return showToast("Veuillez sélectionner les membres participants.", 'info');
+                    }
+                }
+
+                modalSpinPrep.classList.add('hidden');
+                startFinalSpin(btnSpin, selectedSpinType, selectedMembers);
+            };
+        }
+
+        const startFinalSpin = async (triggerBtn, type, members) => {
+            const basePool = activities.filter(a => a.status === 'available');
+            const pool = getFilteredActivities(basePool, homeFilters);
+            
             triggerBtn.disabled = true;
             playSound('success');
             
-            // Pick result in advance
             const randomIndex = Math.floor(Math.random() * pool.length);
             const picked = pool[randomIndex];
             currentWinnerActivity = picked;
@@ -1307,10 +1398,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 wheelContainer.style.transform = `rotate(${currentRotation}deg)`;
 
                 setTimeout(() => {
-                    // Show winner overlay instead of alert
                     winnerTitle.textContent = picked.title;
                     
-                    // Init Rating UI for chosen activity
+                    // Optionnel: On pourrait afficher qui participe dans le titre ou sous-titre
+                    let participantsText = "Activité pour : " + (type === 'seul' ? "Moi seul" : (type === 'couple' ? "Nous deux" : "Toute la famille"));
+                    if (members.length > 0) participantsText += " (" + members.join(', ') + ")";
+                    
+                    const subText = document.createElement('p');
+                    subText.id = "winner-participants-info";
+                    subText.style.fontSize = "0.9rem";
+                    subText.style.opacity = "0.7";
+                    subText.style.marginTop = "5px";
+                    subText.textContent = participantsText;
+                    
+                    const existingInfo = document.getElementById('winner-participants-info');
+                    if (existingInfo) existingInfo.remove();
+                    winnerTitle.after(subText);
+                    
                     currentWinnerRating = picked.rating || null;
                     winnerStars.forEach(s => {
                         s.classList.remove('active');
@@ -1322,7 +1426,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
 
                     winnerOverlay.classList.remove('hidden');
-                }, 5500); // Wait for spin animation to finish
+                }, 5500);
             }
         };
 

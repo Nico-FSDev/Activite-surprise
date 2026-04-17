@@ -305,6 +305,35 @@
                     </div>
 
                     <!-- Universal Roulette Section -->
+                    <div id="modal-spin-prep" class="overlay hidden">
+                        <div class="winner-content glass animate-pop" style="max-width: 400px; padding: 25px;">
+                            <div class="view-header" style="margin-bottom: 20px;">
+                                <h2>Qui participe ? 🎭</h2>
+                                <p>Sélectionnez le mode et les participants.</p>
+                            </div>
+                            
+                            <div class="prep-options">
+                                <div class="spin-type-selector">
+                                    <button class="prep-type-btn active" data-type="seul">👤 Seul</button>
+                                    <button class="prep-type-btn" data-type="couple">👫 En couple</button>
+                                    <button class="prep-type-btn" data-type="famille">👨‍👩‍👧‍👦 En famille</button>
+                                </div>
+
+                                <div id="spin-participants-selection" class="hidden" style="margin-top: 20px; background: rgba(0,0,0,0.05); padding: 15px; border-radius: 12px; max-height: 200px; overflow-y: auto;">
+                                    <p style="font-size: 0.85rem; margin-bottom: 10px; opacity: 0.7;">Cochez les participants :</p>
+                                    <div id="spin-p-list-check" style="display: flex; flex-direction: column; gap: 8px;">
+                                        <!-- Checkboxes injected here -->
+                                    </div>
+                                </div>
+                                
+                                <div style="display: flex; gap: 10px; margin-top: 25px;">
+                                    <button id="btn-confirm-spin" class="primary-btn wide glass">Lancer la Roulette !</button>
+                                    <button id="btn-cancel-spin" class="secondary-btn wide glass">Annuler</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="discovery-section">
                         <div class="roulette-wrapper">
                             <div class="roulette-pointer">▼</div>

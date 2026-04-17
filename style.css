@@ -933,6 +933,58 @@ textarea.modern-input {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+/* Preparation Modal & Spin Types */
+.spin-type-selector {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.prep-type-btn {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 12px 8px;
+    border-radius: 12px;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.prep-type-btn.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary-light);
+    box-shadow: 0 4px 15px rgba(74, 179, 45, 0.3);
+}
+
+.spin-member-chk {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary);
+    cursor: pointer;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
 .winner-content button {
     font-size: 1.0625rem;
     padding: 12px 24px;
