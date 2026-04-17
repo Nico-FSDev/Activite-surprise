@@ -847,19 +847,30 @@ textarea.modern-input {
 
 .roulette-pointer {
     position: absolute;
-    top: -20px;
+    top: -28px;
     left: 50%;
-    transform: translateX(-50%);
-    z-index: 20;
-    color: #fbc02d; /* Couleur dorée/jaune pour rappeler les étoiles */
-    font-size: 2.5rem;
-    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4));
-    animation: pointerBounce 1s infinite alternate;
+    transform: translateX(-50%) rotate(-45deg); /* Pointe enfin vers le bas ! */
+    z-index: 30;
+    width: 46px;
+    height: 46px;
+    background: white;
+    border: 3px solid #1e4d1a;
+    border-radius: 50% 50% 50% 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-@keyframes pointerBounce {
-    from { transform: translateX(-50%) translateY(0); }
-    to { transform: translateX(-50%) translateY(5px); }
+.roulette-pointer::after {
+    content: '!';
+    font-family: 'Outfit', sans-serif;
+    font-weight: 900;
+    font-size: 1.8rem;
+    color: #1e4d1a;
+    transform: rotate(45deg); /* Remet le texte droit */
+    margin-top: -2px;
+    margin-left: -2px;
 }
 
 .spin-center-btn {

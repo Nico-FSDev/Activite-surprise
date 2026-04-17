@@ -1922,81 +1922,92 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const basePool = activities.filter(a => a.status === 'available');
         let fullPool = getFilteredActivities(basePool, homeFilters);
-        
         if (fullPool.length < 2) {
             container.innerHTML = '<div class="roulette-placeholder">Ajoutez des activités !</div>';
             return;
         }
 
-        // Limit to 8 activities for better design (pick random 8 from pool)
         let pool = [...fullPool];
-        if (pool.length > 8) {
-            pool = pool.sort(() => 0.5 - Math.random()).slice(0, 8);
-        }
+        if (pool.length > 8) pool = pool.sort(() => 0.5 - Math.random()).slice(0, 8);
+        const segmentCount = 8;
 
-        const size = 320;
+        const size = 320; 
         const center = size / 2;
-        const radius = center - 10;
-        const segmentAngle = 360 / pool.length;
+        const radius = 150; 
+        const segmentAngle = 360 / Math.max(pool.length, segmentCount);
         
-        let svgHtml = `<svg viewBox="0 0 ${size} ${size}" class="roulette-wheel-svg">
+        const forestGreen = "#1e4d1a";
+        const limeGreen = "#a4d65d";
+        const grassGreen = "#6fb532";
+
+        let svgHtml = `<svg viewBox="0 0 ${size} ${size}" style="overflow: visible;">
             <defs>
-                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" style="stop-color:#a8e063;stop-opacity:1" />
-                    <stop offset="100%" style="stop-color:#56ab2f;stop-opacity:1" />
+                <linearGradient id="glossyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:white;stop-opacity:0.4" />
+                    <stop offset="50%" style="stop-color:white;stop-opacity:0" />
                 </linearGradient>
-                <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" style="stop-color:#56ab2f;stop-opacity:1" />
-                    <stop offset="100%" style="stop-color:#4ab32d;stop-opacity:1" />
-                </linearGradient>
-                <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-                    <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
-                    <feOffset dx="0" dy="2" result="offsetblur" />
-                    <feComponentTransfer><feFuncA type="linear" slope="0.5"/></feComponentTransfer>
-                    <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+                <filter id="hubShadow">
+                    <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.3"/>
                 </filter>
-            </defs>`;
+            </defs>
+
+            <!-- Main Wheel Outer Shadow -->
+            <circle cx="${center}" cy="${center}" r="${radius}" fill="black" opacity="0.15" transform="translate(0, 10)" />
+            
+            <!-- Outer Ring Border -->
+            <circle cx="${center}" cy="${center}" r="${radius}" fill="${forestGreen}" />`;
         
+        const imageIcons = ['\ue97a', '\uea1a', '\uea7d', '\ueeb4', '\ueaa5', '\uea83', '\ueee5', '\ueed1'];
+
         pool.forEach((activity, i) => {
+            if (i >= segmentCount) return;
             const startAngle = i * segmentAngle;
             const endAngle = (i + 1) * segmentAngle;
-            const x1 = center + radius * Math.cos(Math.PI * (startAngle - 90) / 180);
-            const y1 = center + radius * Math.sin(Math.PI * (startAngle - 90) / 180);
-            const x2 = center + radius * Math.cos(Math.PI * (endAngle - 90) / 180);
-            const y2 = center + radius * Math.sin(Math.PI * (endAngle - 90) / 180);
-            const largeArc = segmentAngle > 180 ? 1 : 0;
-            const fill = i % 2 === 0 ? 'url(#grad1)' : 'url(#grad2)';
+            const wheelRadius = radius - 6;
+            const x1 = center + wheelRadius * Math.cos(Math.PI * (startAngle - 90) / 180);
+            const y1 = center + wheelRadius * Math.sin(Math.PI * (startAngle - 90) / 180);
+            const x2 = center + wheelRadius * Math.cos(Math.PI * (endAngle - 90) / 180);
+            const y2 = center + wheelRadius * Math.sin(Math.PI * (endAngle - 90) / 180);
             
-            svgHtml += `<path d="M ${center} ${center} L ${x1} ${y1} A ${radius} ${radius} 0 ${largeArc} 1 ${x2} ${y2} Z" fill="${fill}" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>`;
+            const largeArc = segmentAngle > 180 ? 1 : 0;
+            const fill = i % 2 === 0 ? limeGreen : grassGreen;
+            
+            svgHtml += `<path d="M ${center} ${center} L ${x1} ${y1} A ${wheelRadius} ${wheelRadius} 0 ${largeArc} 1 ${x2} ${y2} Z" 
+                              fill="${fill}" stroke="${forestGreen}" stroke-width="1.5"/>`;
             
             const textAngle = startAngle + segmentAngle / 2;
-            const textRadius = radius * 0.65;
-            const textX = center + textRadius * Math.cos(Math.PI * (textAngle - 90) / 180);
-            const textY = center + textRadius * Math.sin(Math.PI * (textAngle - 90) / 180);
-            
-            let label = activity.title;
-            const emoji = activity.title.match(/[\p{Emoji_Presentation}\p{Emoji}\p{Emoji_Component}]/gu)?.[0] || '';
-            const titleWithoutEmoji = label.replace(emoji, '').trim();
-            let displayLabel = titleWithoutEmoji.length > 12 ? titleWithoutEmoji.substring(0, 10) + '..' : titleWithoutEmoji;
+            const iconRadius = wheelRadius * 0.65;
+            const iconX = center + iconRadius * Math.cos(Math.PI * (textAngle - 90) / 180);
+            const iconY = center + iconRadius * Math.sin(Math.PI * (textAngle - 90) / 180);
             
             svgHtml += `
-                <text x="${textX}" y="${textY}" 
-                      fill="white" 
-                      font-size="13" 
-                      font-weight="800" 
+                <text x="${iconX}" y="${iconY}" 
+                      fill="white"
+                      font-family="boxicons"
+                      font-size="42" 
                       text-anchor="middle" 
                       dominant-baseline="middle" 
-                      style="text-shadow: 0 1px 3px rgba(0,0,0,0.3); font-family: 'Outfit', sans-serif;"
-                      transform="rotate(${textAngle}, ${textX}, ${textY})">
-                    ${emoji ? emoji + ' ' : ''}${displayLabel}
+                      style="text-shadow: 0 2px 4px rgba(0,0,0,0.1);"
+                      transform="rotate(${textAngle}, ${iconX}, ${iconY})">
+                    ${imageIcons[i % imageIcons.length]}
                 </text>`;
         });
         
-        // Central Logo-style hub
+        // Glossy Reflection Overlay
+        svgHtml += `<path d="M ${center-radius+20} ${center-40} A ${radius-20} ${radius-20} 0 0 1 ${center+radius-20} ${center-40} L ${center+radius-50} ${center-40} A ${radius-50} ${radius-50} 0 0 0 ${center-radius+50} ${center-40} Z" 
+                          fill="url(#glossyGrad)" opacity="0.5" />`;
+
+        // Center Hub 
         svgHtml += `
-            <circle cx="${center}" cy="${center}" r="35" fill="white" filter="url(#shadow)"/>
-            <circle cx="${center}" cy="${center}" r="28" fill="url(#grad1)"/>
-            <text x="${center}" y="${center}" dy="8" font-size="28" text-anchor="middle" dominant-baseline="middle">✨</text>
+            <circle cx="${center}" cy="${center}" r="${radius * 0.28}" fill="${forestGreen}" filter="url(#hubShadow)" />
+            <circle cx="${center}" cy="${center}" r="${radius * 0.24}" fill="${grassGreen}" stroke="${forestGreen}" stroke-width="1.5" />
+            <!-- The White Star -->
+            <path d="M ${center} ${center-20} L ${center+5.5} ${center-7} L ${center+18} ${center-5.5} L ${center+9} ${center+3.5} L ${center+11} ${center+16} L ${center} ${center+11} L ${center-11} ${center+16} L ${center-9} ${center+3.5} L ${center-18} ${center-5.5} L ${center-5.5} ${center-7} Z" 
+                  fill="white" />
+            <!-- Face on the Star -->
+            <circle cx="${center-4}" cy="${center-1}" r="1.8" fill="${forestGreen}" />
+            <circle cx="${center+4}" cy="${center-1}" r="1.8" fill="${forestGreen}" />
+            <path d="M ${center-3.5} ${center+5} Q ${center} ${center+9} ${center+3.5} ${center+5}" fill="none" stroke="${forestGreen}" stroke-width="1.8" stroke-linecap="round" />
         `;
 
         svgHtml += '</svg>';
