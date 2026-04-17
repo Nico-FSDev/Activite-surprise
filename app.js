@@ -69,17 +69,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function initMusic() {
         if (!bgMusic) {
-            // Utilisation d'un flux test ultra-stable pour vérifier la connexion
-            bgMusic = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3');
+            // Musique Jazzy / Lofi au coin du feu
+            bgMusic = new Audio('https://cdn.pixabay.com/audio/2022/08/02/audio_884b9bc146.mp3');
             bgMusic.loop = true;
-            bgMusic.volume = 0.5; // Augmentation du volume pour être sûr de l'entendre
+            bgMusic.volume = 0.5;
             
             bgMusic.onerror = () => {
                 console.error("Erreur de chargement audio");
-                if (typeof showToast === 'function') showToast("Erreur de chargement de la musique", "error");
             };
-            
-            bgMusic.oncanplaythrough = () => console.log("Musique prête à être jouée");
         }
     }
 
