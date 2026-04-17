@@ -370,6 +370,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 const userCred = await createUserWithEmailAndPassword(auth, email, password);
                 await updateProfile(userCred.user, { displayName: email.split('@')[0] });
+                
+                // Initialize Firestore user document right away
+                await setDoc(doc(db, "users", userCred.user.uid), {
+                    email: email,
+                    displayName: email.split('@')[0],
+                    manualVerified: false,
+                    allowRequests: true,
+                    lightMode: false,
+                    soundEnabled: true,
+                    language: 'fr',
+                    createdAt: Date.now()
+                });
+
                 // Send verification email
                 await sendEmailVerification(userCred.user);
                 
@@ -561,16 +574,35 @@ document.addEventListener('DOMContentLoaded', () => {
                     const item = document.createElement('div');
                     item.className = 'admin-v-item';
                     item.innerHTML = `
-                        <div class="admin-v-info">
-                            <span class="admin-v-email">${req.email}</span>
-                            <span class="admin-v-date">${new Date(req.createdAt).toLocaleDateString()}</span>
+                        <div style="width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                            <div class="admin-v-info">
+                                <span class="admin-v-email" style="font-weight: 600;">${req.email}</span>
+                                <span class="admin-v-date" style="font-size: 0.8rem; color: var(--text-muted);">${new Date(req.createdAt).toLocaleDateString()}</span>
+                            </div>
+                            <div style="display:flex; gap:10px;">
+                                <button class="admin-v-btn" style="background:var(--error-color); padding: 5px 10px;" data-action="delete" data-id="${req.id}">X</button>
+                                <button class="admin-v-btn" data-action="approve" data-id="${req.id}" data-uid="${req.uid}" data-email="${req.email}">Valider</button>
+                            </div>
                         </div>
-                        <button class="admin-v-btn" data-id="${req.id}" data-uid="${req.uid}" data-email="${req.email}">Valider</button>
                     `;
-                    item.querySelector('button').onclick = (e) => {
-                        const btn = e.currentTarget;
-                        approveUserManually(btn.dataset.id, btn.dataset.uid, btn.dataset.email);
-                    };
+                    item.querySelectorAll('button').forEach(btn => {
+                        btn.onclick = async (e) => {
+                            const target = e.currentTarget;
+                            if (target.dataset.action === 'approve') {
+                                approveUserManually(target.dataset.id, target.dataset.uid, target.dataset.email);
+                            } else if (target.dataset.action === 'delete') {
+                                try {
+                                    target.disabled = true;
+                                    await deleteDoc(doc(db, "verification_requests", target.dataset.id));
+                                    showToast("Demande supprimée", "success");
+                                } catch(err) {
+                                    console.error(err);
+                                    showToast("Erreur (les règles Firestore ne sont pas à jour ?)", "error");
+                                    target.disabled = false;
+                                }
+                            }
+                        };
+                    });
                     list.appendChild(item);
                 });
             });
@@ -600,30 +632,31 @@ document.addEventListener('DOMContentLoaded', () => {
             
             let targetUid = userUid;
             
-            // If UID is unknown, we need to find the user by email
-            if (!targetUid || targetUid === 'unknown') {
-                // This is slightly harder on client-side as we can't query all users usually 
-                // unless we have a 'users' collection with email field (which we do)
-                const q = query(collection(db, "users"), where("email", "==", email));
-                const userSnap = await getDocs(q);
-                if (!userSnap.empty) {
-                    targetUid = userSnap.docs[0].id;
-                } else {
-                    // If user document doesn't exist yet, we'll create a "pre-approval" 
-                    // or just show an error.
-                    return showToast("Utilisateur introuvable. Demandez-lui de s'inscrire d'abord.", 'error');
+            // If UID is unknown or string "undefined", we need to find the user by email
+            if (!targetUid || targetUid === 'unknown' || targetUid === 'undefined') {
+                try {
+                    const q = query(collection(db, "users"), where("email", "==", email));
+                    const userSnap = await getDocs(q);
+                    if (!userSnap.empty) {
+                        targetUid = userSnap.docs[0].id;
+                    } else {
+                        return showToast("Utilisateur introuvable. Demandez-lui de s'inscrire d'abord.", 'error');
+                    }
+                } catch(err) {
+                    console.error("Query users failed", err);
+                    return showToast("Erreur de lecture: Les règles Firestore n'ont pas été publiées !", 'error', 6000);
                 }
             }
 
             // 1. Mark user as manualVerified in users collection
-            await updateDoc(doc(db, "users", targetUid), { manualVerified: true });
+            await setDoc(doc(db, "users", targetUid), { manualVerified: true }, { merge: true });
             // 2. Update request status
             await updateDoc(doc(db, "verification_requests", requestId), { status: 'approved' });
             
             showToast("Utilisateur validé avec succès !", 'success');
         } catch (e) {
-            console.error(e);
-            showToast("Erreur lors de la validation.", 'error');
+            console.error("Write failed", e);
+            showToast("Erreur d'écriture : Avez-vous cliqué sur Publier dans les règles ?", 'error', 6000);
         }
     }
     function listenToSupportTickets() {
@@ -1480,15 +1513,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 };
             } else if (n.type === 'admin_verify') {
                 item.innerHTML = `
-                    <div class="notif-text" style="border-left: 3px solid #60a5fa; padding-left: 10px;">
-                        <span style="font-size: 0.7rem; text-transform: uppercase; color: #60a5fa; font-weight: 700; display: block; margin-bottom: 2px;">Validation manuelle</span>
-                        <strong>${n.email}</strong> demande d'être validé manuellement.
+                    <div class="notif-text" style="border-left: 3px solid #60a5fa; padding-left: 10px; width:100%;">
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <span style="font-size: 0.7rem; text-transform: uppercase; color: #60a5fa; font-weight: 700;">Validation manuelle</span>
+                            <button class="mini-btn decline-req" style="background:transparent; color:var(--error-color); padding:0; min-width:auto; font-weight:bold;">X</button>
+                        </div>
+                        <strong>${n.email}</strong> demande d'être validé.
                     </div>
                     <div class="notif-actions">
-                        <button class="mini-btn accept" style="background:#60a5fa">Valider</button>
+                        <button class="mini-btn accept" style="background:#60a5fa; width:100%;">Valider</button>
                     </div>
                 `;
                 item.querySelector('.accept').onclick = () => approveUserManually(n.id, n.uid, n.email);
+                item.querySelector('.decline-req').onclick = async (e) => {
+                    try {
+                        e.currentTarget.disabled = true;
+                        await deleteDoc(doc(db, "verification_requests", n.id));
+                    } catch(err) {
+                        showToast("Erreur de suppression.", "error");
+                    }
+                };
             } else {
                 item.innerHTML = `
                     <div class="notif-text">
