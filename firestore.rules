@@ -6,24 +6,25 @@ service cloud.firestore {
     // Allow users to request manual verification even if not authenticated
     match /verification_requests/{request} {
       allow create: if true; // Required for help button from login page
-      allow read, update, delete: if request.auth != null && request.auth.token.email == 'n.lohberger@gmail.com';
+      allow read, update, delete: if request.auth != null && (request.auth.token.email == 'n.lohberger@gmail.com' || request.auth.token.email == 'n.lohberger.pro@gmail.com');
     }
 
     // Support tickets and bug reports
     match /support_tickets/{ticket} {
       allow create: if true; // Any user can submit a ticket
-      allow read, update, delete: if request.auth != null && request.auth.token.email == 'n.lohberger@gmail.com';
+      allow read, update, delete: if request.auth != null && (request.auth.token.email == 'n.lohberger@gmail.com' || request.auth.token.email == 'n.lohberger.pro@gmail.com');
     }
+
 
 
     // Global stats for admin
     match /users/{userId} {
       allow read, write: if request.auth != null && request.auth.uid == userId;
-      allow read, update: if request.auth != null && request.auth.token.email == 'n.lohberger@gmail.com';
+      allow read, update: if request.auth != null && (request.auth.token.email == 'n.lohberger@gmail.com' || request.auth.token.email == 'n.lohberger.pro@gmail.com');
     }
     
     match /activities/{activityId} {
-      allow read: if request.auth != null && request.auth.token.email == 'n.lohberger@gmail.com';
+      allow read: if request.auth != null && (request.auth.token.email == 'n.lohberger@gmail.com' || request.auth.token.email == 'n.lohberger.pro@gmail.com');
       allow read, write: if request.auth != null;
     }
 

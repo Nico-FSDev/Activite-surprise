@@ -17,6 +17,7 @@ import {
     doc, 
     updateDoc,
     getDoc,
+    getDocs,
     setDoc,
     writeBatch
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
@@ -265,7 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (profileEmailDisplay) profileEmailDisplay.textContent = "Connecté en tant que : " + (user.email || "Non disponible");
 
             const userEmail = (user.email || "").toLowerCase();
-            const isAdminEmail = userEmail === 'n.lohberger@gmail.com' || userEmail === 'm.lohberger.pro';
+            const isAdminEmail = userEmail === 'n.lohberger@gmail.com' || userEmail === 'm.lohberger.pro' || userEmail === 'n.lohberger.pro@gmail.com';
             const isAdminFlag = userDoc.exists() && userDoc.data().role === 'admin';
             const isAdmin = isAdminEmail || isAdminFlag;
 
