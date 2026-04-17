@@ -849,7 +849,7 @@ textarea.modern-input {
     position: absolute;
     top: -28px;
     left: 50%;
-    transform: translateX(-50%) rotate(-45deg); /* Pointe enfin vers le bas ! */
+    transform: translateX(-50%) rotate(-45deg); /* Pointe précisément vers le bas ! */
     z-index: 30;
     width: 46px;
     height: 46px;

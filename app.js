@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function initMusic() {
         if (!bgMusic) {
             // Utilisation du fichier local pour garantir la disponibilité
-            bgMusic = new Audio('audio/background-chill.mp3');
+            bgMusic = new Audio('audio/Tuesday_at_the_Window.mp3');
             bgMusic.loop = true;
             bgMusic.volume = 0.5;
             
